@@ -15,17 +15,7 @@ public class Menu {
      * Muestra el menú principal de la aplicación con un mensaje de bienvenida.
      */
     public static void presentarMenuPrincipal() {
-        System.out.println("""
-                ---------------- BIENVENIDO(A) A NUESTRO CRM ----------------
-        
-                Por favor ingrese la operación que desea ejecutar:
-                1. Realizar venta
-                2. Realizar devolucion
-                3. Ejecutar contrato de cliente
-                4. Finalizar contrato de cliente
-                5. Enviar información masiva
-                0. Finalizar aplicación
-                """);
+        presentarOpciones();
         Scanner scanner = new Scanner(System.in);
         int opcion = scanner.nextInt();
         while (opcion != 0) {
@@ -35,11 +25,25 @@ public class Menu {
                 case 3 -> presentarMenuEjecutarContrato();
                 case 4 -> presentarMenuFinalizarContrato();
                 case 5 -> presentarMenuEnviarInformacionMasiva();
-                default -> System.out.println("---------------- OPCIÓN NO VÁLIDA ----------------");
+                default -> System.out.println("---------------- OPCIÓN INCORRECTA ----------------");
             }
+            presentarOpciones();
             opcion = scanner.nextInt();
         }
         System.out.println("---------------- GRACIAS, HASTA PRONTO ----------------");
+    }
+
+    private static void presentarOpciones() {
+        System.out.println("""
+                ---------------- BIENVENIDO(A) A NUESTRO CRM ----------------
+        
+                Por favor ingrese la operación que desea ejecutar:
+                1. Realizar venta
+                2. Realizar devolucion
+                3. Ejecutar contrato de cliente
+                4. Finalizar contrato de cliente
+                5. Enviar información masiva
+                0. Finalizar aplicación""");
     }
 
     /**
@@ -74,6 +78,9 @@ public class Menu {
      * Muestra el menú específico para enviar información a todos los clientes.
      */
     private static void presentarMenuEnviarInformacionMasiva() {
-        // TODO
+        System.out.println("Escriba el mensaje que desea enviar a todos los clientes:");
+        String mensaje = new Scanner(System.in).nextLine();
+//        Comunicacion.enviarInformacionMasiva(mensaje);
+        System.out.println("---------------- MENSAJE ENVIADO ----------------\n");
     }
 }
