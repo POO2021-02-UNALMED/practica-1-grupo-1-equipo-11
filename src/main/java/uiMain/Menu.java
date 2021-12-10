@@ -1,9 +1,11 @@
 package uiMain;
 
+import gestorAplicacion.comunicacion.Comunicacion;
+
 import java.util.Scanner;
 
 /**
- * MÓDULO IUMAIN
+ * MÓDULO INTERFAZ DE USUARIO
  *
  * Presenta el menú principal de la aplicación, lee las opciones ingresadas por el usuario y delega la ejecución a los
  * métodos correspondientes.
@@ -33,6 +35,9 @@ public class Menu {
         System.out.println("---------------- GRACIAS, HASTA PRONTO ----------------");
     }
 
+    /**
+     * Imprime las opciones del menú principal.
+     */
     private static void presentarOpciones() {
         System.out.println("""
                 ---------------- BIENVENIDO(A) A NUESTRO CRM ----------------
@@ -80,7 +85,8 @@ public class Menu {
     private static void presentarMenuEnviarInformacionMasiva() {
         System.out.println("Escriba el mensaje que desea enviar a todos los clientes:");
         String mensaje = new Scanner(System.in).nextLine();
-//        Comunicacion.enviarInformacionMasiva(mensaje);
+        Comunicacion comunicacion = new Comunicacion();
+        comunicacion.enviarMensaje(mensaje);
         System.out.println("---------------- MENSAJE ENVIADO ----------------\n");
     }
 }
