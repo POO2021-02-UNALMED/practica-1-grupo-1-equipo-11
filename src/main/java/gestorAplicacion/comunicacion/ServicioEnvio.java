@@ -11,7 +11,7 @@ import java.util.List;
  */
 abstract class ServicioEnvio {
 
-    protected static List<String> mensajesEnviados = new ArrayList<>();
+    protected static List<String> mensajesEnviados = new ArrayList<>(); // TODO guardar esto en un archivo para que los mensajes enviados queden persistidos
     protected String mensaje;
 
     /**
@@ -20,6 +20,14 @@ abstract class ServicioEnvio {
      */
     ServicioEnvio(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    /**
+     * Retorna los mensajes enviados por el servicio de envío.
+     * @return listado de mensajes enviados.
+     */
+    public static List<String> getMensajesEnviados() {
+        return mensajesEnviados;
     }
 
     /**

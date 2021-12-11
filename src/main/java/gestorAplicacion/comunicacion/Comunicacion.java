@@ -4,6 +4,7 @@ import gestorAplicacion.dominio.Cliente;
 import gestorAplicacion.dominio.Contrato;
 import gestorAplicacion.dominio.MedioComunicacion;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class Comunicacion {
 
     /** Constante para la notificación del mensaje */
-    private static final String NOTIFICACION = "Mensaje '%s' enviado usando '%s' al %s %s";
+    private static final String NOTIFICACION = "Mensaje '%s' enviado al %s %s";
 
     private final List<Cliente> clientes;
     private final List<Contrato> contratos;
@@ -45,7 +46,9 @@ public class Comunicacion {
      * @return listado de clientes.
      */
     private List<Cliente> leerClientes() {
-        return Collections.emptyList(); // TODO leer clientes desde un archivo
+        Cliente daniela = new Cliente("Daniela", MedioComunicacion.EMAIL); // TODO SOLO PRUEBA
+        Cliente juan = new Cliente("Juan", MedioComunicacion.SMS); // TODO SOLO PRUEBA
+        return Arrays.asList(daniela, juan); // TODO leer clientes desde un archivo
     }
 
     /**
@@ -53,7 +56,7 @@ public class Comunicacion {
      * @return listado de contratos.
      */
     private List<Contrato> leerContratos() {
-        return Collections.emptyList(); // TODO leer contratos desde unu archivo
+        return Collections.emptyList(); // TODO leer contratos desde un archivo
     }
 
     /**
@@ -95,7 +98,7 @@ public class Comunicacion {
      * @param medioComunicacion medio usado.
      */
     private void enviarMensaje(String mensaje, String tipo, String identificacion, MedioComunicacion medioComunicacion) {
-        String notificacion = String.format(NOTIFICACION, mensaje, medioComunicacion.getValor(), tipo, identificacion);
+        String notificacion = String.format(NOTIFICACION, mensaje, tipo, identificacion);
         ServicioEnvio servicioEnvio;
         switch (medioComunicacion) {
             case EMAIL -> servicioEnvio = new ServicioEmail(notificacion);

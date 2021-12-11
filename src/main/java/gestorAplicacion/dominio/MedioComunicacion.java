@@ -5,7 +5,7 @@ public enum MedioComunicacion {
     EMAIL("email"),
     SMS("sms"),
     FAX("fax"),
-    TODOS("todos");
+    TODOS("todos los medios");
 
     private final String valor;
 

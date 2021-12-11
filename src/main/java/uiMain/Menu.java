@@ -1,6 +1,7 @@
 package uiMain;
 
 import gestorAplicacion.comunicacion.Comunicacion;
+import gestorAplicacion.dominio.MedioComunicacion;
 
 import java.util.Scanner;
 
@@ -80,12 +81,27 @@ public class Menu {
     }
 
     /**
-     * Muestra el menú específico para enviar información a todos los clientes.
+     * Muestra el menú específico para enviar información a todos los clientes y contratos.
      */
     private static void presentarMenuEnviarInformacionMasiva() {
-        System.out.println("Escriba el mensaje que desea enviar a todos los clientes:");
-        String mensaje = new Scanner(System.in).nextLine();
-        Comunicacion comunicacion = new Comunicacion();
+        System.out.println("Escriba el mensaje que desea enviar a todos los clientes/contratos:");
+        Scanner scanner = new Scanner(System.in);
+        String mensaje = scanner.nextLine();
+        System.out.println("""
+                Seleccione el medio de comunicación a usar:
+                1. EMAIL
+                2. SMS
+                3. FAX
+                4. TODOS""");
+        int medioComunicacion = scanner.nextInt();
+
+        Comunicacion comunicacion;
+        switch (medioComunicacion) {
+            case 1 -> comunicacion = new Comunicacion(MedioComunicacion.EMAIL);
+            case 2 -> comunicacion = new Comunicacion(MedioComunicacion.SMS);
+            case 3 -> comunicacion = new Comunicacion(MedioComunicacion.FAX);
+            default -> comunicacion = new Comunicacion();
+        }
         comunicacion.enviarMensaje(mensaje);
         System.out.println("---------------- MENSAJE ENVIADO ----------------\n");
     }
