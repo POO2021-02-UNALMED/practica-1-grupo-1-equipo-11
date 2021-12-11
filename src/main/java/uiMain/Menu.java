@@ -1,8 +1,11 @@
 package uiMain;
 
+import baseDatos.MensajePersistente;
 import gestorAplicacion.comunicacion.Comunicacion;
 import gestorAplicacion.dominio.MedioComunicacion;
+import gestorAplicacion.dominio.Mensaje;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -104,5 +107,10 @@ public class Menu {
         }
         comunicacion.enviarMensaje(mensaje);
         System.out.println("---------------- MENSAJE ENVIADO ----------------\n");
+        List<String> mensajesEnviados = comunicacion.obtenerMensajesEnviados();
+        List<Mensaje> mensajes = mensajesEnviados.stream().map(Mensaje::new).toList();
+
+        MensajePersistente mensajePersistente = new MensajePersistente();
+        mensajes.forEach(mensajePersistente::guardar);
     }
 }
