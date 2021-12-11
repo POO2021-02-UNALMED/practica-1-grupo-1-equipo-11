@@ -80,8 +80,8 @@ public class Menu {
         } while (opcion != 0);
 
         System.out.println("""
-                Escriba la cédula del cliente:
-                """);
+                Escriba la cédula del cliente:""");
+        scanner.nextLine();
         String cedula = scanner.nextLine();
 
         ClientePersistente clientePersistente = new ClientePersistente();
@@ -91,13 +91,13 @@ public class Menu {
                     El cliente no existe, ingrese la siguiente información para crearlo:
                     Nombre
                     Correo
-                    Celular
-                    """);
+                    Celular""");
             String nombre = scanner.nextLine();
             String correo = scanner.nextLine();
             String celular = scanner.nextLine();
 
-            cliente = new Cliente(nombre, correo, celular);
+            cliente = new Cliente(nombre, cedula, correo, celular);
+            clientePersistente.guardar(cliente);
         }
         // TODO código para crear una venta y asociar el cliente
     }
