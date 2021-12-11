@@ -32,4 +32,9 @@ public class MensajePersistente implements Persistente<Mensaje> {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public Mensaje leerUno(String identificador) {
+        return null;
+    }
 }
