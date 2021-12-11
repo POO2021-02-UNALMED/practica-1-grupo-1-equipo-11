@@ -2,10 +2,12 @@ package baseDatos;
 
 import gestorAplicacion.dominio.Cliente;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 /**
@@ -22,20 +24,34 @@ public class ClientePersistente implements Persistente<Cliente> {
 
     @Override
     public void guardar(Cliente cliente) {
-
+        FileOutputStream fos;
+        try {
+            String ruta = System.getProperty("user.dir") + String.format("\\src\\main\\java\\baseDatos\\temp\\clientes\\%s.txt", cliente.getCedula());
+            File file = new File(ruta);
+            file.createNewFile();
+            fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(cliente);
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Cliente leerUno(String identificador) {
         FileInputStream fis;
         try {
-            String ruta = String.format("/src/main/java/baseDatos/temp/clientes/%s.txt", identificador);
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\clientes\\%s.txt", identificador);
             fis = new FileInputStream(System.getProperty("user.dir") + ruta);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            return (Cliente) ois.readObject();
+            Cliente cliente = (Cliente) ois.readObject();
+            ois.close();
+            fis.close();
+            return cliente;
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }
