@@ -11,7 +11,7 @@ import java.util.List;
  */
 abstract class ServicioEnvio {
 
-    protected static List<String> mensajesEnviados = new ArrayList<>(); // TODO guardar esto en un archivo para que los mensajes enviados queden persistidos
+    protected static List<String> mensajesEnviados = new ArrayList<>();
     protected String mensaje;
 
     /**

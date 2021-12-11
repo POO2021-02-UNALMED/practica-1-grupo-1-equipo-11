@@ -108,4 +108,12 @@ public class Comunicacion {
         }
         servicioEnvio.enviar();
     }
+
+    /**
+     * Retorna todos los mensajes enviados a todos los clientes/contratos.
+     * @return listado de mensajes enviados.
+     */
+    public List<String> obtenerMensajesEnviados() {
+        return ServicioEnvio.getMensajesEnviados();
+    }
 }
