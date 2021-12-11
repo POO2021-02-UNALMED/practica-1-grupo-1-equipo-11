@@ -20,4 +20,11 @@ public interface Persistente<T> {
      * @param t objeto a ser guardado.
      */
     void guardar(T t);
+
+    /**
+     * Método para leer un objeto.
+     * @param identificador clave primaria del objeto.
+     * @return objeto leido.
+     */
+    T leerUno(String identificador);
 }
