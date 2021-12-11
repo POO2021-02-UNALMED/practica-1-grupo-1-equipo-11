@@ -1,7 +1,9 @@
 package uiMain;
 
+import baseDatos.ClientePersistente;
 import baseDatos.MensajePersistente;
 import gestorAplicacion.comunicacion.Comunicacion;
+import gestorAplicacion.dominio.Cliente;
 import gestorAplicacion.dominio.MedioComunicacion;
 import gestorAplicacion.dominio.Mensaje;
 
@@ -59,7 +61,45 @@ public class Menu {
      * Muestra el menú específico para la creación de una venta.
      */
     private static void presentarMenuRealizarVenta() {
-        // TODO
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("""
+                    Seleccione los productos para la venta, seleccione 0 cuando no desee más productos:
+                    1. Nevera
+                    2. Horno
+                    3. Microondas
+                    4. Olla arrocera
+                    5. Licuadora
+                    6. Computador
+                    7. Celular
+                    8. Tablet
+                    9. Audifonos
+                    10. Estufa""");
+            opcion = scanner.nextInt();
+        } while (opcion != 0);
+
+        System.out.println("""
+                Escriba la cédula del cliente:
+                """);
+        String cedula = scanner.nextLine();
+
+        ClientePersistente clientePersistente = new ClientePersistente();
+        Cliente cliente = clientePersistente.leerUno(cedula);
+        if (cliente == null) {
+            System.out.println("""
+                    El cliente no existe, ingrese la siguiente información para crearlo:
+                    Nombre
+                    Correo
+                    Celular
+                    """);
+            String nombre = scanner.nextLine();
+            String correo = scanner.nextLine();
+            String celular = scanner.nextLine();
+
+            cliente = new Cliente(nombre, correo, celular);
+        }
+        // TODO código para crear una venta y asociar el cliente
     }
 
     /**
