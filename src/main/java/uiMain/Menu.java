@@ -77,6 +77,7 @@ public class Menu {
                     9. Audifonos
                     10. Estufa""");
             opcion = scanner.nextInt();
+
         } while (opcion != 0);
 
         System.out.println("""
