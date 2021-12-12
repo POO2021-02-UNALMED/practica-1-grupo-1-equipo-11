@@ -3,8 +3,10 @@ package baseDatos;
 import gestorAplicacion.ventas.Producto;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
@@ -39,6 +41,17 @@ public class ProductoPersistente implements Persistente<Producto> {
 
     @Override
     public Producto leerUno(String identificador) {
-        return null;
+        FileInputStream fis;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\productos\\%s.txt", identificador);
+            fis = new FileInputStream(System.getProperty("user.dir") + ruta);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Producto producto = (Producto) ois.readObject();
+            ois.close();
+            fis.close();
+            return producto;
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
+        }
     }
 }
