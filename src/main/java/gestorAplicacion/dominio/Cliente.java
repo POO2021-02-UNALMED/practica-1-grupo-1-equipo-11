@@ -16,4 +16,28 @@ public class Cliente implements Serializable {
     private String estado;
     private Contrato contrato;
     private MedioComunicacion medioComunicacion;
+
+    public Cliente(String nombre, String cedula, String correo, String celular) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.celular = celular;
+    }
+
+    public Cliente(String nombre, MedioComunicacion medioComunicacion) {
+        this.nombre = nombre;
+        this.medioComunicacion = medioComunicacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public MedioComunicacion getMedioComunicacion() {
+        return medioComunicacion;
+    }
 }
