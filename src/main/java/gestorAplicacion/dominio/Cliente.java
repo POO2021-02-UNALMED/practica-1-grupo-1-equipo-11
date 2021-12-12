@@ -3,6 +3,11 @@ package gestorAplicacion.dominio;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Clase que representa un cliente dentro del sistema.
+ *
+ * @author Juan Daniel Bula, Leidy Daniela Alzate, Oscar Andres Usuga
+ */
 public class Cliente implements Serializable {
 
     @Serial
@@ -17,6 +22,13 @@ public class Cliente implements Serializable {
     private Contrato contrato;
     private MedioComunicacion medioComunicacion;
 
+    /**
+     * Constructor para crear clientes con la información mínima necesaria.
+     * @param nombre nombre del cliente.
+     * @param cedula cédula del cliente.
+     * @param correo correo electrónico.
+     * @param celular número móvil.
+     */
     public Cliente(String nombre, String cedula, String correo, String celular) {
         this.nombre = nombre;
         this.cedula = cedula;
