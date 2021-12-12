@@ -20,4 +20,9 @@ public class ContratoPersistente implements Persistente<Contrato> {
     public Contrato leerUno(String identificador) {
         return null;
     }
+
+    @Override
+    public void actualizar(Contrato contrato) {
+
+    }
 }

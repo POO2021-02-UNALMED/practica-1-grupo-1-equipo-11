@@ -2,11 +2,16 @@ package uiMain;
 
 import baseDatos.ClientePersistente;
 import baseDatos.MensajePersistente;
+import baseDatos.ProductoPersistente;
+import baseDatos.VentaPersistente;
 import gestorAplicacion.comunicacion.Comunicacion;
 import gestorAplicacion.dominio.Cliente;
 import gestorAplicacion.dominio.MedioComunicacion;
 import gestorAplicacion.dominio.Mensaje;
+import gestorAplicacion.ventas.Producto;
+import gestorAplicacion.ventas.VentaIndividual;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,6 +68,9 @@ public class Menu {
     private static void presentarMenuRealizarVenta() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
+
+        List<Producto> productosSeleccionados = new ArrayList<>();
+        ProductoPersistente productoPersistente = new ProductoPersistente();
         do {
             System.out.println("""
                     Seleccione los productos para la venta, seleccione 0 cuando no desee más productos:
@@ -77,10 +85,26 @@ public class Menu {
                     9. Audifonos
                     10. Estufa""");
             opcion = scanner.nextInt();
+            switch (opcion) {
+                case 1 -> productosSeleccionados.add(productoPersistente.leerUno("01"));
+                case 2 -> productosSeleccionados.add(productoPersistente.leerUno("02"));
+                case 3 -> productosSeleccionados.add(productoPersistente.leerUno("03"));
+                case 4 -> productosSeleccionados.add(productoPersistente.leerUno("04"));
+                case 5 -> productosSeleccionados.add(productoPersistente.leerUno("05"));
+                case 6 -> productosSeleccionados.add(productoPersistente.leerUno("06"));
+                case 7 -> productosSeleccionados.add(productoPersistente.leerUno("07"));
+                case 8 -> productosSeleccionados.add(productoPersistente.leerUno("08"));
+                case 9 -> productosSeleccionados.add(productoPersistente.leerUno("09"));
+                case 10 -> productosSeleccionados.add(productoPersistente.leerUno("10"));
+            }
         } while (opcion != 0);
 
-        System.out.println("""
-                Escriba la cédula del cliente:""");
+        if (productosSeleccionados.isEmpty()) {
+            System.out.println("----- NO SE PUEDE CREAR UNA VENTA SIN PRODUCTOS -----");
+            return;
+        }
+
+        System.out.println("Escriba la cédula del cliente:");
         scanner.nextLine();
         String cedula = scanner.nextLine();
 
@@ -99,7 +123,21 @@ public class Menu {
             cliente = new Cliente(nombre, cedula, correo, celular);
             clientePersistente.guardar(cliente);
         }
-        // TODO código para crear una venta y asociar el cliente
+
+        System.out.println("Escriba el código para la venta:");
+        String codigoVenta = scanner.nextLine();
+
+        VentaIndividual venta = new VentaIndividual(codigoVenta, cliente, productosSeleccionados);
+        System.out.printf("---------- LA VENTA TIENE ESTADO %s----------%n", venta.getEstado());
+
+        venta.venderProductos();
+        System.out.printf("---------- LA VENTA TIENE ESTADO %s----------%n", venta.getEstado());
+
+        VentaPersistente ventaPersistente = new VentaPersistente();
+        ventaPersistente.guardar(venta);
+
+        List<Producto> productosVendidos = venta.getProductos();
+        productosVendidos.forEach(productoPersistente::actualizar);
     }
 
     /**

@@ -1,9 +1,8 @@
 package gestorAplicacion.ventas;
 
-import gestorAplicacion.dominio.Contrato;
-
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,12 +14,11 @@ public class Producto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 3L;
-    private static List<Producto> productosVendidos;
+    private static List<Producto> productosVendidos = new ArrayList<>();
 
     private String codigo;
     private String nombre;
     private double precio;
-    private LineaProducto linea;
     private int cantidad;
 
     public Producto(String codigo, String nombre, double precio, int cantidad) {
@@ -30,12 +28,12 @@ public class Producto implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Producto(String codigo, String nombre, double precio, LineaProducto linea, int cantidad) {
-        this(codigo, nombre, precio, cantidad);
-        this.linea = linea;
-    }
-
     public String getCodigo() {
         return codigo;
+    }
+
+    public void venderProducto() {
+        productosVendidos.add(this);
+        this.cantidad--;
     }
 }
