@@ -54,4 +54,9 @@ public class ClientePersistente implements Persistente<Cliente> {
             return null;
         }
     }
+
+    @Override
+    public void actualizar(Cliente cliente) {
+
+    }
 }

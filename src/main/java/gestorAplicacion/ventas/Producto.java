@@ -2,6 +2,7 @@ package gestorAplicacion.ventas;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public class Producto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 3L;
-    private static List<Producto> productosVendidos;
+    private static List<Producto> productosVendidos = new ArrayList<>();
 
     private String codigo;
     private String nombre;
