@@ -37,4 +37,9 @@ public class MensajePersistente implements Persistente<Mensaje> {
     public Mensaje leerUno(String identificador) {
         return null;
     }
+
+    @Override
+    public void actualizar(Mensaje mensaje) {
+
+    }
 }

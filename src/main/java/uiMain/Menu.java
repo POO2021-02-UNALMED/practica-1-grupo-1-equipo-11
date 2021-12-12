@@ -3,11 +3,13 @@ package uiMain;
 import baseDatos.ClientePersistente;
 import baseDatos.MensajePersistente;
 import baseDatos.ProductoPersistente;
+import baseDatos.VentaPersistente;
 import gestorAplicacion.comunicacion.Comunicacion;
 import gestorAplicacion.dominio.Cliente;
 import gestorAplicacion.dominio.MedioComunicacion;
 import gestorAplicacion.dominio.Mensaje;
 import gestorAplicacion.ventas.Producto;
+import gestorAplicacion.ventas.VentaIndividual;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,8 +104,7 @@ public class Menu {
             return;
         }
 
-        System.out.println("""
-                Escriba la cédula del cliente:""");
+        System.out.println("Escriba la cédula del cliente:");
         scanner.nextLine();
         String cedula = scanner.nextLine();
 
@@ -123,6 +124,20 @@ public class Menu {
             clientePersistente.guardar(cliente);
         }
 
+        System.out.println("Escriba el código para la venta:");
+        String codigoVenta = scanner.nextLine();
+
+        VentaIndividual venta = new VentaIndividual(codigoVenta, cliente, productosSeleccionados);
+        System.out.printf("---------- LA VENTA TIENE ESTADO %s----------%n", venta.getEstado());
+
+        venta.venderProductos();
+        System.out.printf("---------- LA VENTA TIENE ESTADO %s----------%n", venta.getEstado());
+
+        VentaPersistente ventaPersistente = new VentaPersistente();
+        ventaPersistente.guardar(venta);
+
+        List<Producto> productosVendidos = venta.getProductos();
+        productosVendidos.forEach(productoPersistente::actualizar);
     }
 
     /**

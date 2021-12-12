@@ -27,4 +27,10 @@ public interface Persistente<T> {
      * @return objeto leido.
      */
     T leerUno(String identificador);
+
+    /**
+     * Método para actualizar el objeto ingresado como parámetro.
+     * @param t objeto a ser actualizado.
+     */
+    void actualizar(T t);
 }
