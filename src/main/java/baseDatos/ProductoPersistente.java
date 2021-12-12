@@ -4,6 +4,7 @@ import gestorAplicacion.ventas.Producto;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -52,6 +53,21 @@ public class ProductoPersistente implements Persistente<Producto> {
             return producto;
         } catch (IOException | ClassNotFoundException e) {
             return null;
+        }
+    }
+
+    @Override
+    public void actualizar(Producto producto) {
+        FileOutputStream fos;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\productos\\%s.txt", producto.getCodigo());
+            fos = new FileOutputStream(System.getProperty("user.dir") + ruta);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fos);
+            objectOutputStream.writeObject(producto);
+            objectOutputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
