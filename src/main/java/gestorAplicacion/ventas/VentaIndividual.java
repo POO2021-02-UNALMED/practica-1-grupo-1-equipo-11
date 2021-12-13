@@ -37,11 +37,26 @@ public class VentaIndividual implements Serializable {
         return estado;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getCodigoVenta() {
         return codigoVenta;
     }
 
     public List<Producto> getProductos() {
         return productos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Venta [
+                    codigo = %s,
+                    cliente = %s,
+                    productos = %s,
+                    estado = %s
+                ]""", codigoVenta, cliente, productos, estado);
     }
 }
