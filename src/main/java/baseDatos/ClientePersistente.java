@@ -57,6 +57,16 @@ public class ClientePersistente implements Persistente<Cliente> {
 
     @Override
     public void actualizar(Cliente cliente) {
-
+        FileOutputStream fos;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\clientes\\%s.txt", cliente.getCedula());
+            fos = new FileOutputStream(System.getProperty("user.dir") + ruta);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fos);
+            objectOutputStream.writeObject(cliente);
+            objectOutputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
