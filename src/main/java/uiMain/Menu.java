@@ -136,6 +136,7 @@ public class Menu {
         VentaPersistente ventaPersistente = new VentaPersistente();
         ventaPersistente.guardar(venta);
 
+        // Aquí se actualiza el inventario de cada producto ya que al venderse se debe restar la cantidad vendida.
         List<Producto> productosVendidos = venta.getProductos();
         productosVendidos.forEach(productoPersistente::actualizar);
     }
