@@ -2,6 +2,7 @@ package gestorAplicacion.dominio;
 
 import gestorAplicacion.ventas.Producto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 public class Contrato implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 5L;
 
     private String codigo;
@@ -20,16 +22,19 @@ public class Contrato implements Serializable {
     private String estado;
     private TipoContrato tipoContrato;
 
-    public Contrato(String codigo, Cliente cliente, List<Producto> productos, TipoContrato tipoContrato) {
+    public Contrato(String codigo, TipoContrato tipoContrato) {
         this.codigo = codigo;
-        this.cliente = cliente;
-        this.productos = productos;
         this.tipoContrato = tipoContrato;
-        this.estado = "EJECUTADO";
     }
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public void ejecutarContrato(Cliente cliente, List<Producto> productos) {
+        this.estado = "EJECUTADO";
+        this.cliente = cliente;
+        this.productos = productos;
     }
 
     @Override
