@@ -4,6 +4,7 @@ import gestorAplicacion.ventas.Producto;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,6 +36,12 @@ public class Contrato implements Serializable {
         this.estado = "EJECUTADO";
         this.cliente = cliente;
         this.productos = productos;
+    }
+
+    public void deshacerContrato() {
+        this.estado = "FINALIZADO";
+        this.cliente = null;
+        this.productos = Collections.emptyList();
     }
 
     @Override
