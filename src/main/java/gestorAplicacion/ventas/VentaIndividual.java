@@ -33,6 +33,14 @@ public class VentaIndividual implements Serializable {
         this.productos.forEach(Producto::venderProducto);
     }
 
+    public void devolverProducto(String codigoProducto) {
+        this.productos.removeIf(p -> p.getCodigo().equals(codigoProducto));
+
+        if (this.productos.isEmpty()) {
+            this.setEstado("DEVUELTA");
+        }
+    }
+
     public String getEstado() {
         return estado;
     }
