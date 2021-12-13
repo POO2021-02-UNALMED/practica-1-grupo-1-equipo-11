@@ -191,6 +191,11 @@ public class Menu {
         String cedula = scanner.nextLine();
         Cliente cliente = new ClientePersistente().leerUno(cedula);
 
+        if (cliente.getContrato() != null) {
+            System.out.println("------- EL CLIENTE YA TIENE UN CONTRATO ASOCIADO -------");
+            return;
+        }
+
         System.out.println("Escriba el código del contrato:");
         String codigoContrato = scanner.nextLine();
 
@@ -227,9 +232,14 @@ public class Menu {
             tipoContrato = TipoContrato.MINORISTA;
         }
 
+        Contrato contrato = new Contrato(codigoContrato, tipoContrato);
+        contrato.ejecutarContrato(cliente, productosContrato);
+
         ContratoPersistente contratoPersistente = new ContratoPersistente();
-        Contrato contrato = new Contrato(codigoContrato, cliente, productosContrato, tipoContrato);
         contratoPersistente.guardar(contrato);
+
+        cliente.setContrato(contrato);
+        new ClientePersistente().actualizar(cliente);
 
         Contrato contratoLeido = contratoPersistente.leerUno(codigoContrato);
         System.out.println("------- CONTRATO EJECUTADO -------");
