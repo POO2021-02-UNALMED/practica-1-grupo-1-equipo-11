@@ -57,6 +57,16 @@ public class ContratoPersistente implements Persistente<Contrato> {
 
     @Override
     public void actualizar(Contrato contrato) {
-
+        FileOutputStream fos;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\contratos\\%s.txt", contrato.getCodigo());
+            fos = new FileOutputStream(System.getProperty("user.dir") + ruta);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fos);
+            objectOutputStream.writeObject(contrato);
+            objectOutputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
