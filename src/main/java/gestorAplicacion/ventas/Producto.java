@@ -32,6 +32,14 @@ public class Producto implements Serializable {
         return codigo;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public void venderProducto() {
         productosVendidos.add(this);
         this.cantidad--;
@@ -39,6 +47,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Producto [nombre = %s, precio = %f]", nombre, precio);
+        return String.format("""
+                Producto [ codigo = %s, nombre = %s, precio = %f ]""", codigo, nombre, precio);
     }
 }

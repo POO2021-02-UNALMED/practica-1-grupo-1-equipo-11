@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class Contrato implements Serializable {
 
+    private static final long serialVersionUID = 5L;
+
     private String codigo;
     private Cliente cliente;
     private List<Producto> productos;

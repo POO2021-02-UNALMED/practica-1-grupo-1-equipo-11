@@ -147,7 +147,38 @@ public class Menu {
      * Muestra el menú específico para ejecutar la devolución de una venta.
      */
     private static void presentarMenuRealizarDevolucion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Escriba el código de la venta a devolver:");
+        String codigoVenta = scanner.nextLine();
 
+        VentaPersistente ventaPersistente = new VentaPersistente();
+        VentaIndividual ventaIndividual = ventaPersistente.leerUno(codigoVenta);
+
+        System.out.println("La venta que existe es la siguente:");
+        System.out.println(ventaIndividual);
+
+        ProductoPersistente productoPersistente = new ProductoPersistente();
+        System.out.println("Escriba el código del producto que desea devolver:");
+        String codigoProducto = scanner.nextLine();
+        Producto producto = productoPersistente.leerUno(codigoProducto);
+
+        int cantidad = (int) ventaIndividual.getProductos()
+                .stream()
+                .filter(p -> p.getCodigo().equals(codigoProducto))
+                .count();
+        ventaIndividual.getProductos().removeIf(p -> p.getCodigo().equals(codigoProducto));
+
+        if (ventaIndividual.getProductos().isEmpty()) {
+            ventaIndividual.setEstado("DEVUELTA");
+        }
+        ventaPersistente.actualizar(ventaIndividual);
+
+        producto.setCantidad(producto.getCantidad() + cantidad);
+        productoPersistente.actualizar(producto);
+
+        ventaIndividual = ventaPersistente.leerUno(codigoVenta);
+        System.out.println("Así quedó la venta después de la devolución:");
+        System.out.println(ventaIndividual);
     }
 
     /**
@@ -202,7 +233,7 @@ public class Menu {
 
         Contrato contratoLeido = contratoPersistente.leerUno(codigoContrato);
         System.out.println("------- CONTRATO EJECUTADO -------");
-        System.out.println(contratoLeido.toString());
+        System.out.println(contratoLeido);
     }
 
     /**
