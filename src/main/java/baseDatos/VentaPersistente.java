@@ -3,8 +3,10 @@ package baseDatos;
 import gestorAplicacion.ventas.VentaIndividual;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
@@ -39,11 +41,32 @@ public class VentaPersistente implements Persistente<VentaIndividual> {
 
     @Override
     public VentaIndividual leerUno(String identificador) {
-        return null;
+        FileInputStream fis;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\ventas\\%s.txt", identificador);
+            fis = new FileInputStream(System.getProperty("user.dir") + ruta);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            VentaIndividual venta = (VentaIndividual) ois.readObject();
+            ois.close();
+            fis.close();
+            return venta;
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
+        }
     }
 
     @Override
     public void actualizar(VentaIndividual ventaIndividual) {
-
+        FileOutputStream fos;
+        try {
+            String ruta = String.format("\\src\\main\\java\\baseDatos\\temp\\ventas\\%s.txt", ventaIndividual.getCodigoVenta());
+            fos = new FileOutputStream(System.getProperty("user.dir") + ruta);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fos);
+            objectOutputStream.writeObject(ventaIndividual);
+            objectOutputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
