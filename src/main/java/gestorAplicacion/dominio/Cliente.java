@@ -52,4 +52,9 @@ public class Cliente implements Serializable {
     public MedioComunicacion getMedioComunicacion() {
         return medioComunicacion;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Cliente [nombre = %s, cédula = %s]", nombre, cedula);
+    }
 }
