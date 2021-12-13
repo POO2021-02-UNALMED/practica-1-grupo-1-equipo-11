@@ -166,11 +166,7 @@ public class Menu {
                 .stream()
                 .filter(p -> p.getCodigo().equals(codigoProducto))
                 .count();
-        ventaIndividual.getProductos().removeIf(p -> p.getCodigo().equals(codigoProducto));
-
-        if (ventaIndividual.getProductos().isEmpty()) {
-            ventaIndividual.setEstado("DEVUELTA");
-        }
+        ventaIndividual.devolverProducto(codigoProducto);
         ventaPersistente.actualizar(ventaIndividual);
 
         producto.setCantidad(producto.getCantidad() + cantidad);
@@ -250,7 +246,29 @@ public class Menu {
      * Muestra el menú específico para finalizar un contrato con algún cliente.
      */
     private static void presentarMenuFinalizarContrato() {
-        // TODO
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el código del contrato a finalizar:");
+        String codigoContrato = scanner.nextLine();
+
+        ContratoPersistente contratoPersistente = new ContratoPersistente();
+        Contrato contrato = contratoPersistente.leerUno(codigoContrato);
+
+        System.out.println("Esta es la información del contrato a finalizar:");
+        System.out.println(contrato);
+
+        System.out.println("¿Está seguro? (Escriba s o n)");
+        String respuesta = scanner.nextLine();
+        if ("s".equalsIgnoreCase(respuesta)) {
+            contrato.deshacerContrato();
+            contratoPersistente.actualizar(contrato);
+            System.out.println(" ------- EL CONTRATO HA SIDO FINALIZADO -------");
+        } else {
+            System.out.println(" ------- EL CONTRATO NO FUE FINALIZADO -------");
+        }
+
+        contrato = contratoPersistente.leerUno(codigoContrato);
+        System.out.println("Esta es la información del contrato después de la operación:");
+        System.out.println(contrato);
     }
 
     /**
