@@ -53,6 +53,14 @@ public class Cliente implements Serializable {
         return medioComunicacion;
     }
 
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+    }
+
     @Override
     public String toString() {
         return String.format("Cliente [nombre = %s, cédula = %s]", nombre, cedula);
