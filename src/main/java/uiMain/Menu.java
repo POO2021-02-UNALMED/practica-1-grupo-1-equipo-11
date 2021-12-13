@@ -1,13 +1,16 @@
 package uiMain;
 
 import baseDatos.ClientePersistente;
+import baseDatos.ContratoPersistente;
 import baseDatos.MensajePersistente;
 import baseDatos.ProductoPersistente;
 import baseDatos.VentaPersistente;
 import gestorAplicacion.comunicacion.Comunicacion;
 import gestorAplicacion.dominio.Cliente;
+import gestorAplicacion.dominio.Contrato;
 import gestorAplicacion.dominio.MedioComunicacion;
 import gestorAplicacion.dominio.Mensaje;
+import gestorAplicacion.dominio.TipoContrato;
 import gestorAplicacion.ventas.Producto;
 import gestorAplicacion.ventas.VentaIndividual;
 
@@ -133,8 +136,7 @@ public class Menu {
         venta.venderProductos();
         System.out.printf("---------- LA VENTA TIENE ESTADO %s----------%n", venta.getEstado());
 
-        VentaPersistente ventaPersistente = new VentaPersistente();
-        ventaPersistente.guardar(venta);
+        new VentaPersistente().guardar(venta);
 
         // Aquí se actualiza el inventario de cada producto ya que al venderse se debe restar la cantidad vendida.
         List<Producto> productosVendidos = venta.getProductos();
@@ -145,14 +147,62 @@ public class Menu {
      * Muestra el menú específico para ejecutar la devolución de una venta.
      */
     private static void presentarMenuRealizarDevolucion() {
-        // TODO
+
     }
 
     /**
      * Muestra el menú específico para ejecutar un contrato con algún cliente.
      */
     private static void presentarMenuEjecutarContrato() {
-        // TODO
+        System.out.println("Escriba la cédula del cliente para el contrato:");
+        Scanner scanner = new Scanner(System.in);
+
+        String cedula = scanner.nextLine();
+        Cliente cliente = new ClientePersistente().leerUno(cedula);
+
+        System.out.println("Escriba el código del contrato:");
+        String codigoContrato = scanner.nextLine();
+
+        List<Producto> productosContrato = new ArrayList<>();
+        ProductoPersistente productoPersistente = new ProductoPersistente();
+        int producto;
+        do {
+            System.out.println("""
+                    Seleccione los productos para el contrato, escriba 0 cuando no desee más productos:
+                    1. Nevera
+                    2. Horno
+                    3. Microondas
+                    4. Olla arrocera
+                    5. Licuadora""");
+            producto = scanner.nextInt();
+            switch (producto) {
+                case 1 -> productosContrato.add(productoPersistente.leerUno("01"));
+                case 2 -> productosContrato.add(productoPersistente.leerUno("02"));
+                case 3 -> productosContrato.add(productoPersistente.leerUno("03"));
+                case 4 -> productosContrato.add(productoPersistente.leerUno("04"));
+                case 5 -> productosContrato.add(productoPersistente.leerUno("05"));
+            }
+        } while (producto != 0);
+
+        System.out.println("""
+                Seleccione el tipo de contrato:
+                1. MAYORISTA
+                2. MINORISTA""");
+        int seleccion = scanner.nextInt();
+        TipoContrato tipoContrato;
+        if (seleccion == 1) {
+            tipoContrato = TipoContrato.MAYORISTA;
+        } else {
+            tipoContrato = TipoContrato.MINORISTA;
+        }
+
+        ContratoPersistente contratoPersistente = new ContratoPersistente();
+        Contrato contrato = new Contrato(codigoContrato, cliente, productosContrato, tipoContrato);
+        contratoPersistente.guardar(contrato);
+
+        Contrato contratoLeido = contratoPersistente.leerUno(codigoContrato);
+        System.out.println("------- CONTRATO EJECUTADO -------");
+        System.out.println(contratoLeido.toString());
     }
 
     /**
