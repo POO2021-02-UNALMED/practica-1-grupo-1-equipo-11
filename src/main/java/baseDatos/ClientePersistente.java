@@ -18,11 +18,6 @@ import java.util.List;
 public class ClientePersistente implements Persistente<Cliente> {
 
     @Override
-    public List<Cliente> leerTodos() {
-        return null; // TODO
-    }
-
-    @Override
     public void guardar(Cliente cliente) {
         FileOutputStream fos;
         try {

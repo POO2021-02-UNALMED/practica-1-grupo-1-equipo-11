@@ -15,11 +15,6 @@ import java.util.List;
 public class MensajePersistente implements Persistente<Mensaje> {
 
     @Override
-    public List<Mensaje> leerTodos() {
-        return null;
-    }
-
-    @Override
     public void guardar(Mensaje mensaje) {
         FileOutputStream fo;
         try {
