@@ -1,7 +1,5 @@
 package uiMain;
 
-import baseDatos.BaseDatos;
-
 /**
  * MÓDULO UIMAIN
  *
@@ -11,8 +9,6 @@ import baseDatos.BaseDatos;
 public class Aplicacion {
 
     public static void main(String[] args) {
-        BaseDatos.iniciarObjetos();
         Menu.presentarMenuPrincipal();
-        BaseDatos.persistirInformacion();
     }
 }
