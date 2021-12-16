@@ -255,6 +255,10 @@ public class Menu {
 
         System.out.println("Esta es la información del contrato a finalizar:");
         System.out.println(contrato);
+        if ("FINALIZADO".equals(contrato.getEstado())) {
+            System.out.println("----- EL CONTRATO YA SE ENCUENTRA FINALIZADO -----");
+            return;
+        }
 
         System.out.println("¿Está seguro? (Escriba s o n)");
         String respuesta = scanner.nextLine();
