@@ -264,6 +264,7 @@ public class Menu {
         String respuesta = scanner.nextLine();
         if ("s".equalsIgnoreCase(respuesta)) {
             contrato.deshacerContrato();
+            new ClientePersistente().actualizar(contrato.getCliente());
             contratoPersistente.actualizar(contrato);
             System.out.println(" ------- EL CONTRATO HA SIDO FINALIZADO -------");
         } else {
