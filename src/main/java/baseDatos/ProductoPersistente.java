@@ -19,6 +19,11 @@ import java.util.List;
 public class ProductoPersistente implements Persistente<Producto> {
 
     @Override
+    public List<Producto> leerTodos() {
+        return null;
+    }
+
+    @Override
     public void guardar(Producto producto) {
         FileOutputStream fos;
         try {

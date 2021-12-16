@@ -10,6 +10,12 @@ import java.util.List;
 public interface Persistente<T> {
 
     /**
+     * Método para leer todos los objetos especificados.
+     * @return listado de objetos leídos.
+     */
+    List<T> leerTodos();
+
+    /**
      * Método para guardar el objeto pasado como parámetro.
      * @param t objeto a ser guardado.
      */

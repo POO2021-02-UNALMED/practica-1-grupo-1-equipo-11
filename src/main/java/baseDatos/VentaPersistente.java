@@ -18,6 +18,11 @@ import java.util.List;
 public class VentaPersistente implements Persistente<VentaIndividual> {
 
     @Override
+    public List<VentaIndividual> leerTodos() {
+        return null;
+    }
+
+    @Override
     public void guardar(VentaIndividual ventaIndividual) {
         FileOutputStream fos;
         try {
