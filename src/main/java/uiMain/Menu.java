@@ -263,8 +263,9 @@ public class Menu {
         System.out.println("¿Está seguro? (Escriba s o n)");
         String respuesta = scanner.nextLine();
         if ("s".equalsIgnoreCase(respuesta)) {
+            Cliente clienteContrato = contrato.getCliente();
             contrato.deshacerContrato();
-            new ClientePersistente().actualizar(contrato.getCliente());
+            new ClientePersistente().actualizar(clienteContrato);
             contratoPersistente.actualizar(contrato);
             System.out.println(" ------- EL CONTRATO HA SIDO FINALIZADO -------");
         } else {
