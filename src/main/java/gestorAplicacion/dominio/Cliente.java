@@ -30,14 +30,14 @@ public class Cliente implements Serializable {
      * @param celular número móvil.
      */
     public Cliente(String nombre, String cedula, String correo, String celular) {
+        this(cedula, MedioComunicacion.EMAIL);
         this.nombre = nombre;
-        this.cedula = cedula;
         this.correo = correo;
         this.celular = celular;
     }
 
-    public Cliente(String nombre, MedioComunicacion medioComunicacion) {
-        this.nombre = nombre;
+    public Cliente(String cedula, MedioComunicacion medioComunicacion) {
+        this.cedula = cedula;
         this.medioComunicacion = medioComunicacion;
     }
 

@@ -40,8 +40,13 @@ public class Contrato implements Serializable {
 
     public void deshacerContrato() {
         this.estado = "FINALIZADO";
+        this.cliente.setContrato(null);
         this.cliente = null;
         this.productos = Collections.emptyList();
+    }
+
+    public String getEstado() {
+        return estado;
     }
 
     @Override
