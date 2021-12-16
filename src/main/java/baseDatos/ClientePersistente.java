@@ -8,7 +8,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Clase que implementa la interfaz Persistente para manejar la escritura y lectura de clientes en archivos.
@@ -19,7 +25,19 @@ public class ClientePersistente implements Persistente<Cliente> {
 
     @Override
     public List<Cliente> leerTodos() {
-        return null; // TODO
+        try (Stream<Path> stream = Files.list(Paths.get(System.getProperty("user.dir") + "\\src\\main\\java\\baseDatos\\temp\\clientes"))) {
+            List<String> files = stream
+                    .filter(file -> !Files.isDirectory(file))
+                    .map(Path::getFileName)
+                    .map(fileName -> fileName.toString().replace(".txt", ""))
+                    .toList();
+            return files.stream()
+                    .map(this::leerUno)
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 
     @Override
