@@ -1,11 +1,11 @@
 package gestorAplicacion.comunicacion;
 
+import baseDatos.ClientePersistente;
+import baseDatos.ContratoPersistente;
 import gestorAplicacion.dominio.Cliente;
 import gestorAplicacion.dominio.Contrato;
 import gestorAplicacion.dominio.MedioComunicacion;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,9 +46,8 @@ public class Comunicacion {
      * @return listado de clientes.
      */
     private List<Cliente> leerClientes() {
-        Cliente daniela = new Cliente("Daniela", MedioComunicacion.EMAIL); // TODO SOLO PRUEBA
-        Cliente juan = new Cliente("Juan", MedioComunicacion.SMS); // TODO SOLO PRUEBA
-        return Arrays.asList(daniela, juan); // TODO leer clientes desde un archivo
+        ClientePersistente clientePersistente = new ClientePersistente();
+        return clientePersistente.leerTodos();
     }
 
     /**
@@ -56,7 +55,8 @@ public class Comunicacion {
      * @return listado de contratos.
      */
     private List<Contrato> leerContratos() {
-        return Collections.emptyList(); // TODO leer contratos desde un archivo
+        ContratoPersistente contratoPersistente = new ContratoPersistente();
+        return contratoPersistente.leerTodos();
     }
 
     /**
