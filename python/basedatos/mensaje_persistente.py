@@ -9,5 +9,8 @@ class MensajePersistente:
 
     def guardar(self, mensaje):
         file = f'{self._path}'
-        with open(file, 'ab') as f:
-            pickle.dump(mensaje, f, pickle.HIGHEST_PROTOCOL)
+        try:
+            with open(file, 'ab') as f:
+                pickle.dump(mensaje, f, pickle.HIGHEST_PROTOCOL)
+        except Exception:
+            raise FileNotFoundError()

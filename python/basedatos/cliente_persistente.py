@@ -9,16 +9,26 @@ class ClientePersistente:
 
     def guardar(self, cliente):
         file = f'{self._path}/{cliente.get_cedula()}'
-        with open(file, 'wb') as f:
-            pickle.dump(cliente, f, pickle.HIGHEST_PROTOCOL)
+        try:
+            with open(file, 'wb') as f:
+                pickle.dump(cliente, f, pickle.HIGHEST_PROTOCOL)
+        except Exception:
+            raise FileNotFoundError()
 
     def leer_uno(self, identificador):
         file = f'{self._path}/{identificador}'
-        with open(file, 'rb') as f:
-            cliente = pickle.load(f)
-            return cliente
+        try:
+            with open(file, 'rb') as f:
+                cliente = pickle.load(f)
+                return cliente
+        except Exception:
+            raise FileNotFoundError()
+
 
     def leer_todos(self):
         dir_path = f'{self._path}/'
-        clientes = list(map(self.leer_uno, os.listdir(dir_path)))
-        return clientes
+        try:
+            clientes = list(map(self.leer_uno, os.listdir(dir_path)))
+            return clientes
+        except Exception:
+            raise FileNotFoundError()

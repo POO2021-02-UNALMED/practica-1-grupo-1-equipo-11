@@ -9,16 +9,25 @@ class ContratoPersistente:
 
     def guardar(self, contrato):
         file = f'{self._path}/{contrato.get_codigo()}'
-        with open(file, 'wb') as f:
-            pickle.dump(contrato, f, pickle.HIGHEST_PROTOCOL)
+        try:
+            with open(file, 'wb') as f:
+                pickle.dump(contrato, f, pickle.HIGHEST_PROTOCOL)
+        except Exception:
+            raise FileNotFoundError()
 
     def leer_uno(self, identificador):
         file = f'{self._path}/{identificador}'
-        with open(file, 'rb') as f:
-            contrato = pickle.load(f)
-            return contrato
+        try:
+            with open(file, 'rb') as f:
+                contrato = pickle.load(f)
+                return contrato
+        except Exception:
+            raise FileNotFoundError()
 
     def leer_todos(self):
         dir_path = f'{self._path}/'
-        contratos = list(map(self.leer_uno, os.listdir(dir_path)))
-        return contratos
+        try:
+            contratos = list(map(self.leer_uno, os.listdir(dir_path)))
+            return contratos
+        except Exception:
+            raise FileNotFoundError()

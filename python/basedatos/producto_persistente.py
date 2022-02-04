@@ -9,11 +9,17 @@ class ProductoPersistente:
 
     def guardar(self, producto):
         file = f'{self._path}/{producto.get_codigo()}'
-        with open(file, 'wb') as f:
-            pickle.dump(producto, f, pickle.HIGHEST_PROTOCOL)
+        try:
+            with open(file, 'wb') as f:
+                pickle.dump(producto, f, pickle.HIGHEST_PROTOCOL)
+        except Exception:
+            raise FileNotFoundError()
 
     def leer_uno(self, identificador):
         file = f'{self._path}/{identificador}'
-        with open(file, 'rb') as f:
-            producto = pickle.load(f)
-            return producto
+        try:
+            with open(file, 'rb') as f:
+                producto = pickle.load(f)
+                return producto
+        except Exception:
+            raise FileNotFoundError()
