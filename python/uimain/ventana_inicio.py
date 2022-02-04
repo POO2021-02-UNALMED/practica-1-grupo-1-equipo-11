@@ -172,9 +172,9 @@ def change_img1(e):
     photo_img = photo_img.subsample(2)
     label_img['image'] = photo_img
     label_img.pack()
-    label_img.bind("<Enter>", change_img2)
+    #label_img.bind("<Enter>", change_img2)
 
-def change_img2(e):
+'''def change_img2(e):
     global label_img
     label_img.pack_forget()
     label_img = Label(master=frame_P4)
@@ -183,7 +183,7 @@ def change_img2(e):
     label_img['image'] = photo_img
     label_img.pack()
     label_img.bind("<Enter>", change_img1)
-
+'''
 
 # ------------------------------------------------
 # ----------------  Barra de Menú ----------------
