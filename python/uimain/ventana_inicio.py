@@ -135,9 +135,9 @@ def show_names(e):
     leidy.pack()
     oscar.pack()
     juan.pack()
-    label_photo1['image'] = photo_leidy
-    label_photo2['image'] = photo_oscar
-    label_photo3['image'] = photo_juan
+    #label_photo1['image'] = photo_leidy
+    #label_photo2['image'] = photo_oscar
+    #label_photo3['image'] = photo_juan
     frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
     frame_P5.bind("<Button-1>", show_leidy)
 
@@ -303,7 +303,7 @@ frame_P6 = Frame(master=frame_P2, borderwidth=2, relief="groove")
 frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
 
 # ----------- Posicionamiento Grid de fotos -----------
-# Foto Leidy
+"""# Foto Leidy
 label_leidy = Label(master=frame_P6)
 photo_leidy = PhotoImage(file='photos/leidy.png')
 photo_leidy = photo_leidy.subsample(3)
@@ -320,7 +320,7 @@ label_juan = Label(master=frame_P6)
 photo_juan = PhotoImage(file='photos/juandaniel.png')
 photo_juan = photo_juan.subsample(4)
 label_juan['image'] = photo_juan
-label_juan.grid(row=0, column=3)
+label_juan.grid(row=0, column=3)"""
 
 # ----------- Posicionamiento Grid de fotos2 -----------
 # Cargar fotos Leidy
