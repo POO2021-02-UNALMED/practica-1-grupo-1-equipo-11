@@ -1,3 +1,5 @@
+import os
+
 from tkinter import *
 from tkinter import messagebox
 window = Tk()
@@ -200,19 +202,19 @@ frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
 # ----------- Posicionamiento Grid de fotos -----------
 # Foto Leidy
 label_leidy = Label(master=frame_P6)
-photo_leidy = PhotoImage(file=r'./photos/leidy.png')
+photo_leidy = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy.png')
 photo_leidy = photo_leidy.subsample(3)
 label_leidy['image'] = photo_leidy
 label_leidy.grid(row=0, column=0)
 # Foto Oscar
 label_oscar = Label(master=frame_P6)
-photo_oscar = PhotoImage(file=r'./photos/oscar.png')
+photo_oscar = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar.png')
 photo_oscar = photo_oscar.subsample(2)
 label_oscar['image'] = photo_oscar
 label_oscar.grid(row=0, column=1)
 # Foto Juan Daniel
 label_juan = Label(master=frame_P6)
-photo_juan = PhotoImage(file=r'./photos/juandaniel.png')
+photo_juan = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel.png')
 photo_juan = photo_juan.subsample(4)
 label_juan['image'] = photo_juan
 label_juan.grid(row=0, column=3)
