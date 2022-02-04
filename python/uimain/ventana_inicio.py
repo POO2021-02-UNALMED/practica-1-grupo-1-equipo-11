@@ -130,18 +130,30 @@ def inicioCrm():
 # Eventos del ratón para cambiar hojas de vida
 def show_names(e):
     descripcion.pack_forget()
+    frame_P6.pack_forget()
     leidy.pack()
     oscar.pack()
     juan.pack()
+    label_photo1['image'] = photo_leidy
+    label_photo2['image'] = photo_oscar
+    label_photo3['image'] = photo_juan
+    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
     frame_P5.bind("<Button-1>", show_leidy)
 
 def show_leidy(e):
     global descripcion
     oscar.pack_forget()
     juan.pack_forget()
-
     descripcion = Label(master=frame_P5, text='Estudiante de matemáticas', font="Helvetica 12")
     descripcion.pack()
+
+    frame_P6.pack_forget()
+    label_photo1['image'] = photo_leidy1
+    label_photo2['image'] = photo_leidy2
+    label_photo3['image'] = photo_leidy3
+    label_photo4['image'] = photo_leidy4
+    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+
     frame_P5.bind("<Button-1>", show_oscar)
 
 def show_oscar(e):
@@ -152,6 +164,14 @@ def show_oscar(e):
     oscar.pack()
     descripcion = Label(master=frame_P5, text="Estudiante de Ciencias de la Computacion", font="Helvetica 12")
     descripcion.pack()
+
+    frame_P6.pack_forget()
+    label_photo1['image'] = photo_oscar1
+    label_photo2['image'] = photo_oscar2
+    label_photo3['image'] = photo_oscar3
+    label_photo4['image'] = photo_oscar4
+    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+
     frame_P5.bind("<Button-1>", show_juan)
 
 def show_juan(e):
@@ -162,6 +182,14 @@ def show_juan(e):
     juan.pack()
     descripcion = Label(master=frame_P5, text="Estudiante de estadística. \n Apasionado por la ciencia de datos y el fútbol", font="Helvetica 12")
     descripcion.pack()
+
+    frame_P6.pack_forget()
+    label_photo1['image'] = photo_juan1
+    label_photo2['image'] = photo_juan2
+    label_photo3['image'] = photo_juan3
+    label_photo4['image'] = photo_juan4
+    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+
     frame_P5.bind("<Button-1>", show_names)
 
 # Eventos del ratón para cambiar imágenes en ventana inicio
@@ -272,10 +300,7 @@ frame_P5.bind("<Button-1>", show_leidy)
 # Frame anidado P6
 frame_P6 = Frame(master=frame_P2, borderwidth=2, relief="groove")
 frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
-#label_photo = Label(frame_P6)
 
-
-# -----------------------------------------------------
 # ----------- Posicionamiento Grid de fotos -----------
 # Foto Leidy
 label_leidy = Label(master=frame_P6)
@@ -296,6 +321,52 @@ photo_juan = photo_juan.subsample(4)
 label_juan['image'] = photo_juan
 label_juan.grid(row=0, column=3)
 
+# ----------- Posicionamiento Grid de fotos2 -----------
+# Cargar fotos Leidy
+photo_leidy1 = PhotoImage(file='photos/leidy.png')
+photo_leidy1 = photo_leidy1.subsample(3)
+photo_leidy2 = PhotoImage(file='photos/leidy.png')
+photo_leidy2 = photo_leidy2.subsample(3)
+photo_leidy3 = PhotoImage(file='photos/leidy.png')
+photo_leidy3 = photo_leidy3.subsample(3)
+photo_leidy4 = PhotoImage(file='photos/leidy.png')
+photo_leidy4 = photo_leidy4.subsample(3)
 
+# Cargar fotos Oscar
+photo_oscar1 = PhotoImage(file='photos/oscar.png')
+photo_oscar1 = photo_oscar1.subsample(2)
+photo_oscar2 = PhotoImage(file='photos/oscar.png')
+photo_oscar2 = photo_oscar2.subsample(2)
+photo_oscar3 = PhotoImage(file='photos/oscar.png')
+photo_oscar3 = photo_oscar3.subsample(2)
+photo_oscar4 = PhotoImage(file='photos/oscar.png')
+photo_oscar4 = photo_oscar4.subsample(2)
+
+# Cargar fotos Juan Daniel
+photo_juan1 = PhotoImage(file='photos/juandaniel.png')
+photo_juan1 = photo_juan1.subsample(4)
+photo_juan2 = PhotoImage(file='photos/juandaniel.png')
+photo_juan2 = photo_juan2.subsample(4)
+photo_juan3 = PhotoImage(file='photos/juandaniel.png')
+photo_juan3 = photo_juan3.subsample(4)
+photo_juan4 = PhotoImage(file='photos/juandaniel.png')
+photo_juan4 = photo_juan4.subsample(4)
+
+# Fotos por persona en grid
+label_photo1 = Label(master=frame_P6)
+label_photo1['image'] = photo_leidy1
+label_photo1.grid(row=0, column=0)
+
+label_photo2 = Label(master=frame_P6)
+label_photo2['image'] = photo_leidy2
+label_photo2.grid(row=0, column=1)
+
+label_photo3 = Label(master=frame_P6)
+label_photo3['image'] = photo_leidy3
+label_photo3.grid(row=1, column=0)
+
+label_photo4 = Label(master=frame_P6)
+label_photo4['image'] = photo_leidy4
+label_photo4.grid(row=1, column=1)
 
 window.mainloop()
