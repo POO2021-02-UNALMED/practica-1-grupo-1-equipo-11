@@ -77,17 +77,17 @@ def inicioCrm():
     #top = Label(pane_crm, text="top pane")
     #pane_crm.add(top)
     # Botones de zona1
-    archivo = Button(zona1, text="Archivo", command=quit)
-    archivo.pack()
-    zona1.add(archivo)
+    #archivo = Button(zona1, text="Archivo", command=quit)
+    #archivo.pack()
+    #zona1.add(archivo)
 
-    procesos = Button(zona1, text="Procesos y Consultas", command=quit)
-    procesos.pack()
-    zona1.add(procesos)
+    #procesos = Button(zona1, text="Procesos y Consultas", command=quit)
+    #procesos.pack()
+    #zona1.add(procesos)
 
-    ayuda = Button(zona1, text="Ayuda", command=quit)
-    ayuda.pack()
-    zona1.add(ayuda)
+    #ayuda = Button(zona1, text="Ayuda", command=quit)
+    #ayuda.pack()
+    #zona1.add(ayuda)
 
     # ZONA 2
     zona2 = PanedWindow(master=pane_crm, orient=VERTICAL)
@@ -104,7 +104,7 @@ def inicioCrm():
 
     # --------------------------------------------------------------
     # ------------------- Menú ventana de usuario -------------------
-    '''menubar2 = Menu(crm_ppal)
+    menubar2 = Menu(crm_ppal)
     menu1 = Menu(menubar2)
     menu2 = Menu(menubar2)
     menu3 = Menu(menubar2)
@@ -125,7 +125,7 @@ def inicioCrm():
     menu3.add_command(label="Acerca de:", command=inf)
 
     crm_ppal['menu'] = menubar2
-'''
+
 # Eventos del ratón para cambiar hojas de vida
 def show_names(e):
     descripcion.pack_forget()
