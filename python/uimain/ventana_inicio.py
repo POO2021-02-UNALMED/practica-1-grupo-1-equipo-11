@@ -138,7 +138,7 @@ def show_names(e):
     #label_photo1['image'] = photo_leidy
     #label_photo2['image'] = photo_oscar
     #label_photo3['image'] = photo_juan
-    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+    frame_P6.pack()
     frame_P5.bind("<Button-1>", show_leidy)
 
 def show_leidy(e):
@@ -153,7 +153,7 @@ def show_leidy(e):
     label_photo2['image'] = photo_leidy2
     label_photo3['image'] = photo_leidy3
     label_photo4['image'] = photo_leidy4
-    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+    frame_P6.pack()
 
     frame_P5.bind("<Button-1>", show_oscar)
 
@@ -171,7 +171,7 @@ def show_oscar(e):
     label_photo2['image'] = photo_oscar2
     label_photo3['image'] = photo_oscar3
     label_photo4['image'] = photo_oscar4
-    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+    frame_P6.pack()
 
     frame_P5.bind("<Button-1>", show_juan)
 
@@ -181,7 +181,7 @@ def show_juan(e):
     leidy.pack_forget()
     oscar.pack_forget()
     juan.pack()
-    descripcion = Label(master=frame_P5, text="Estudiante de estadística. \n Apasionado por la ciencia de datos y el fútbol", font="Helvetica 12")
+    descripcion = Label(master=frame_P5, text="Estudiante de estadística", font="Helvetica 12")
     descripcion.pack()
 
     frame_P6.pack_forget()
@@ -189,7 +189,7 @@ def show_juan(e):
     label_photo2['image'] = photo_juan2
     label_photo3['image'] = photo_juan3
     label_photo4['image'] = photo_juan4
-    frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
+    frame_P6.pack()
 
     frame_P5.bind("<Button-1>", show_names)
 
@@ -299,9 +299,10 @@ juan.pack()
 frame_P5.bind("<Button-1>", show_leidy)
 
 # Frame anidado P6
-frame_P6 = Frame(master=frame_P2, borderwidth=2, relief="groove")
-frame_P6.pack(fill="both", expand=True, padx=5, pady=5)
-
+frame_img = Frame(master=frame_P2, borderwidth=2, relief="groove")
+frame_img.pack(fill="both", expand=True, padx=5, pady=5)
+frame_P6 = Frame(master=frame_img)
+frame_P6.pack()
 # ----------- Posicionamiento Grid de fotos -----------
 """# Foto Leidy
 label_leidy = Label(master=frame_P6)
@@ -324,26 +325,32 @@ label_juan.grid(row=0, column=3)"""
 
 # ----------- Posicionamiento Grid de fotos2 -----------
 # Cargar fotos Leidy
+photo_leidy = PhotoImage(file='photos/leidy.png')
+photo_leidy = photo_leidy.subsample(3)
 photo_leidy1 = PhotoImage(file='photos/leidy1.png')
-photo_leidy1 = photo_leidy1.subsample(3)
+photo_leidy1 = photo_leidy1.subsample(4)
 photo_leidy2 = PhotoImage(file='photos/leidy2.png')
-photo_leidy2 = photo_leidy2.subsample(3)
+photo_leidy2 = photo_leidy2.subsample(4)
 photo_leidy3 = PhotoImage(file='photos/leidy3.png')
-photo_leidy3 = photo_leidy3.subsample(3)
+photo_leidy3 = photo_leidy3.subsample(4)
 photo_leidy4 = PhotoImage(file='photos/leidy4.png')
-photo_leidy4 = photo_leidy4.subsample(3)
+photo_leidy4 = photo_leidy4.subsample(4)
 
 # Cargar fotos Oscar
+photo_oscar = PhotoImage(file='photos/oscar.png')
+photo_oscar = photo_oscar.subsample(2)
 photo_oscar1 = PhotoImage(file='photos/oscar1.png')
-photo_oscar1 = photo_oscar1.subsample(2)
+photo_oscar1 = photo_oscar1.subsample(4)
 photo_oscar2 = PhotoImage(file='photos/oscar2.png')
-photo_oscar2 = photo_oscar2.subsample(2)
+photo_oscar2 = photo_oscar2.subsample(4)
 photo_oscar3 = PhotoImage(file='photos/oscar3.png')
-photo_oscar3 = photo_oscar3.subsample(2)
+photo_oscar3 = photo_oscar3.subsample(4)
 photo_oscar4 = PhotoImage(file='photos/oscar4.png')
-photo_oscar4 = photo_oscar4.subsample(2)
+photo_oscar4 = photo_oscar4.subsample(4)
 
 # Cargar fotos Juan Daniel
+photo_juan = PhotoImage(file='photos/juandaniel.png')
+photo_juan = photo_juan.subsample(4)
 photo_juan1 = PhotoImage(file='photos/juandaniel1.png')
 photo_juan1 = photo_juan1.subsample(4)
 photo_juan2 = PhotoImage(file='photos/juandaniel2.png')
@@ -355,19 +362,19 @@ photo_juan4 = photo_juan4.subsample(4)
 
 # Fotos por persona en grid
 label_photo1 = Label(master=frame_P6)
-label_photo1['image'] = photo_leidy1
+label_photo1['image'] = photo_leidy
 label_photo1.grid(row=0, column=0)
 
 label_photo2 = Label(master=frame_P6)
-label_photo2['image'] = photo_leidy2
+label_photo2['image'] = photo_oscar
 label_photo2.grid(row=0, column=1)
 
 label_photo3 = Label(master=frame_P6)
-label_photo3['image'] = photo_leidy3
+label_photo3['image'] = photo_juan
 label_photo3.grid(row=1, column=0)
 
 label_photo4 = Label(master=frame_P6)
-label_photo4['image'] = photo_leidy4
+label_photo4['image'] = photo_leidy
 label_photo4.grid(row=1, column=1)
 
 window.mainloop()
