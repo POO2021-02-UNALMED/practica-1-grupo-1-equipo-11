@@ -1,5 +1,8 @@
+import os.path
 from tkinter import *
 from tkinter import messagebox
+
+
 window = Tk()
 window.geometry('820x440')
 window.title('Inicio')
@@ -248,15 +251,15 @@ frame_P4 = Frame(master=frame_P1, borderwidth=2, relief="groove")
 frame_P4.pack(side=BOTTOM)#padx=5, pady=5)
 
 # Cargar imágenes
-img2 = PhotoImage(file='images/crm2.png')
+img2 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/images/crm2.png')
 img2 = img2.subsample(2)
-img3 = PhotoImage(file='images/crm3.png')
+img3 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/images/crm3.png')
 img3 = img3.subsample(2)
-img4 = PhotoImage(file='images/crm4.png')
+img4 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/images/crm4.png')
 img4 = img4.subsample(2)
-img5 = PhotoImage(file='images/crm5.png')
+img5 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/images/crm5.png')
 img5 = img5.subsample(2)
-img1 = PhotoImage(file='images/LOGOU.png')
+img1 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/images/LOGOU.png')
 img1 = img1.subsample(2)
 
 label_img = Label(master=frame_P4)
@@ -297,64 +300,45 @@ frame_img = Frame(master=frame_P2, borderwidth=2, relief="groove")
 frame_img.pack(fill="both", expand=True, padx=5, pady=5)
 frame_P6 = Frame(master=frame_img)
 frame_P6.pack()
-# ----------- Posicionamiento Grid de fotos -----------
-"""# Foto Leidy
-label_leidy = Label(master=frame_P6)
-photo_leidy = PhotoImage(file='photos/leidy.png')
-photo_leidy = photo_leidy.subsample(3)
-label_leidy['image'] = photo_leidy
-label_leidy.grid(row=0, column=0)
-# Foto Oscar
-label_oscar = Label(master=frame_P6)
-photo_oscar = PhotoImage(file='photos/oscar.png')
-photo_oscar = photo_oscar.subsample(2)
-label_oscar['image'] = photo_oscar
-label_oscar.grid(row=0, column=1)
-# Foto Juan Daniel
-label_juan = Label(master=frame_P6)
-photo_juan = PhotoImage(file='photos/juandaniel.png')
-photo_juan = photo_juan.subsample(4)
-label_juan['image'] = photo_juan
-label_juan.grid(row=0, column=3)"""
 
-# ----------- Posicionamiento Grid de fotos2 -----------
+# ----------- Posicionamiento Grid de fotos -----------
 # Cargar fotos Leidy
-photo_leidy = PhotoImage(file='photos/leidy.png')
+photo_leidy = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy.png')
 photo_leidy = photo_leidy.subsample(4)
-photo_leidy1 = PhotoImage(file='photos/leidy1.png')
+photo_leidy1 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy1.png')
 photo_leidy1 = photo_leidy1.subsample(3)
-photo_leidy2 = PhotoImage(file='photos/leidy2.png')
+photo_leidy2 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy2.png')
 photo_leidy2 = photo_leidy2.subsample(3)
-photo_leidy3 = PhotoImage(file='photos/leidy3.png')
+photo_leidy3 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy3.png')
 photo_leidy3 = photo_leidy3.subsample(3)
-photo_leidy4 = PhotoImage(file='photos/leidy4.png')
+photo_leidy4 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/leidy4.png')
 photo_leidy4 = photo_leidy4.subsample(3)
 
 # Cargar fotos Oscar
-photo_oscar = PhotoImage(file='photos/oscar.png')
+photo_oscar = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar.png')
 photo_oscar = photo_oscar.subsample(4)
-photo_oscar1 = PhotoImage(file='photos/oscar1.png')
+photo_oscar1 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar1.png')
 photo_oscar1 = photo_oscar1.subsample(3)
-photo_oscar2 = PhotoImage(file='photos/oscar2.png')
+photo_oscar2 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar2.png')
 photo_oscar2 = photo_oscar2.subsample(3)
-photo_oscar3 = PhotoImage(file='photos/oscar3.png')
+photo_oscar3 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar3.png')
 photo_oscar3 = photo_oscar3.subsample(3)
-photo_oscar4 = PhotoImage(file='photos/oscar4.png')
+photo_oscar4 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/oscar4.png')
 photo_oscar4 = photo_oscar4.subsample(3)
 
 # Cargar fotos Juan Daniel
-photo_juan = PhotoImage(file='photos/juandaniel.png')
+photo_juan = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel.png')
 photo_juan = photo_juan.subsample(4)
-photo_juan1 = PhotoImage(file='photos/juandaniel1.png')
+photo_juan1 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel1.png')
 photo_juan1 = photo_juan1.subsample(3)
-photo_juan2 = PhotoImage(file='photos/juandaniel2.png')
+photo_juan2 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel2.png')
 photo_juan2 = photo_juan2.subsample(3)
-photo_juan3 = PhotoImage(file='photos/juandaniel3.png')
+photo_juan3 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel3.png')
 photo_juan3 = photo_juan3.subsample(3)
-photo_juan4 = PhotoImage(file='photos/juandaniel4.png')
+photo_juan4 = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/juandaniel4.png')
 photo_juan4 = photo_juan4.subsample(3)
 
-photo_blanco = PhotoImage(file='photos/blanco.png')
+photo_blanco = PhotoImage(file=f'{os.path.dirname(os.path.abspath(__file__))}/photos/blanco.png')
 photo_blanco = photo_blanco.subsample(4)
 
 # Fotos por persona en grid
