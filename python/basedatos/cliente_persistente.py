@@ -8,7 +8,7 @@ class ClientePersistente:
         self._path = f'{os.path.dirname(os.path.abspath(__file__))}/temp/clientes'
 
     def guardar(self, cliente):
-        file = f'{self._path}/{cliente.get_cedula()}'
+        file = f'{self._path}/{cliente.getCedula()}'
         try:
             with open(file, 'wb') as f:
                 pickle.dump(cliente, f, pickle.HIGHEST_PROTOCOL)

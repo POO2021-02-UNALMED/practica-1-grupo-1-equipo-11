@@ -8,7 +8,7 @@ class VentaPersistente:
         self._path = f'{os.path.dirname(os.path.abspath(__file__))}/temp/ventas'
 
     def guardar(self, venta):
-        file = f'{self._path}/{venta.get_codigo_venta()}'
+        file = f'{self._path}/{venta.getCodigoVenta()}'
         try:
             with open(file, 'wb') as f:
                 pickle.dump(venta, f, pickle.HIGHEST_PROTOCOL)
