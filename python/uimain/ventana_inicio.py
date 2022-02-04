@@ -165,25 +165,35 @@ def show_juan(e):
     frame_P5.bind("<Button-1>", show_names)
 
 # Eventos del ratón para cambiar imágenes en ventana inicio
-'''def change_img1(e):
-    label_img.pack_forget()
-    label_img2 = Label(master=frame_P4)
-    photo_img2 = PhotoImage(file='images/crm3.png')
-    photo_img2 = photo_img.subsample(2)
-    label_img2['image'] = photo_img2
-    label_img2.pack()
-    label_img2.bind("<Enter>", change_img2)
-
 def change_img2(e):
-    label_img2.pack_forget()
-    label_img3 = Label(master=frame_P4)
-    photo_img3 = PhotoImage(file='images/crm4.png')
-    photo_img3 = photo_img.subsample(2)
-    label_img3['image'] = photo_img3
-    label_img3.pack()
-    label_img3.bind("<Enter>", quit)'''
+    frame_P4.pack_forget()
+    label_img['image'] = img2
+    frame_P4.pack(side=BOTTOM)
+    label_img.bind('<Enter>', change_img3)
 
+def change_img3(e):
+    frame_P4.pack_forget()
+    label_img['image'] = img3
+    frame_P4.pack(side=BOTTOM)
+    label_img.bind('<Enter>', change_img4)
 
+def change_img4(e):
+    frame_P4.pack_forget()
+    label_img['image'] = img4
+    frame_P4.pack(side=BOTTOM)
+    label_img.bind('<Enter>', change_img5)
+
+def change_img5(e):
+    frame_P4.pack_forget()
+    label_img['image'] = img5
+    frame_P4.pack(side=BOTTOM)
+    label_img.bind('<Enter>', change_img1)
+
+def change_img1(e):
+    frame_P4.pack_forget()
+    label_img['image'] = img1
+    frame_P4.pack(side=BOTTOM)
+    label_img.bind('<Enter>', change_img2)
 # ------------------------------------------------
 # ----------------  Barra de Menú ----------------
 menubar = Menu(window)
@@ -215,17 +225,27 @@ label_P3.place(x=0, y=25)
 frame_P4 = Frame(master=frame_P1, borderwidth=2, relief="groove")
 frame_P4.pack(side=BOTTOM)#padx=5, pady=5)
 
+# Cargar imágenes
+img2 = PhotoImage(file='images/crm2.png')
+img2 = img2.subsample(2)
+img3 = PhotoImage(file='images/crm3.png')
+img3 = img3.subsample(2)
+img4 = PhotoImage(file='images/crm4.png')
+img4 = img4.subsample(2)
+img5 = PhotoImage(file='images/crm5.png')
+img5 = img5.subsample(2)
+img1 = PhotoImage(file='images/LOGOU.png')
+img1 = img1.subsample(2)
+
 label_img = Label(master=frame_P4)
-photo_img = PhotoImage(file='images/crm2.png')
-photo_img = photo_img.subsample(2)
-label_img['image'] = photo_img
+label_img['image'] = img2
 label_img.pack()
 
 boton_ingreso = Button(master=frame_P4, text='Ingresar al sistema', font="Helvetica 14 bold", command=inicioCrm)
 boton_ingreso.pack(side=BOTTOM)
 
 # Control del cursor para cambio en imagenes
-#label_img.bind("<Enter>", change_img1)
+label_img.bind("<Enter>", change_img2)
 
 
 # ------- Frame principal P2 -------
