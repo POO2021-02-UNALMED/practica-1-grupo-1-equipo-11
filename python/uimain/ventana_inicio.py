@@ -10,8 +10,15 @@ window.option_add('*tearOff', FALSE)  # Eliminar underline
 # ------------------- Eventos ventana inicio -------------------
 #Descripcion del sistema
 def info():
-    inf = Label(master=frame_P3,
-          text="Nuestro CRM busca administrar \n clientes, mejorar la relación \n entre ellos y vender productos \n de forma sistematizada, bien sea por contratos \n o ventas individuales.\n ¡Ingresa a nuestro sistema y vive la experiencia!").pack()
+    frame_P3.pack_forget()
+    label_P3.place_forget()
+    label_inf = Label(master=frame_P3,
+          text="Nuestro CRM busca administrar clientes y \n"
+               "vender productos de forma sistematizada, \n"
+               "bien sea por contratos o ventas individuales.\n "
+               "¡Ingresa a nuestro sistema y vive la experiencia!", font="Helvetica 10")
+    label_inf.place(x=0, y=25)
+    frame_P3.pack(side=TOP, fill="both", expand=True, padx=5, pady=5)
 
 def evento():
     window.deiconify()
@@ -119,7 +126,7 @@ def inicioCrm():
 
     crm_ppal['menu'] = menubar2
 '''
-# Eventos del ratón
+# Eventos del ratón para cambiar hojas de vida
 def show_names(e):
     descripcion.pack_forget()
     leidy.pack()
@@ -156,6 +163,28 @@ def show_juan(e):
     descripcion.pack()
     frame_P5.bind("<Button-1>", show_names)
 
+# Eventos del ratón para cambiar imágenes en ventana inicio
+def change_img1(e):
+    global label_img
+    label_img.pack_forget()
+    label_img = Label(master=frame_P4)
+    photo_img = PhotoImage(file='images/crm3.png')
+    photo_img = photo_img.subsample(2)
+    label_img['image'] = photo_img
+    label_img.pack()
+    label_img.bind("<Enter>", change_img2)
+
+def change_img2(e):
+    global label_img
+    label_img.pack_forget()
+    label_img = Label(master=frame_P4)
+    photo_img = PhotoImage(file='images/crm4.png')
+    photo_img = photo_img.subsample(2)
+    label_img['image'] = photo_img
+    label_img.pack()
+    label_img.bind("<Enter>", change_img1)
+
+
 # ------------------------------------------------
 # ----------------  Barra de Menú ----------------
 menubar = Menu(window)
@@ -178,7 +207,7 @@ frame_P1 = Frame(master=outer_frame, borderwidth=2, relief="groove")
 frame_P1.pack(side='left', fill="both", expand=True, padx=5, pady=5)
 
 # Frame anidado P3
-frame_P3 = Frame(master=frame_P1, width=270, borderwidth=2, relief="groove")
+frame_P3 = Frame(master=frame_P1, width=295, borderwidth=2, relief="groove")
 label_P3 = Label(master=frame_P3, text='¡Hola! \n \n ¡Bienvenidos a nuestro CRM!', font="Helvetica 14")
 frame_P3.pack(side=TOP, fill="both", expand=True, padx=5, pady=5)
 label_P3.place(x=0, y=25)
@@ -195,6 +224,10 @@ label_img.pack()
 
 boton_ingreso = Button(master=frame_P4, text='Ingresar al sistema', font="Helvetica 14 bold", command=inicioCrm)
 boton_ingreso.pack()
+
+# Control del cursor para cambio en imagenes
+label_img.bind("<Enter>", change_img1)
+
 
 # ------- Frame principal P2 -------
 frame_P2 = Frame(master=outer_frame, borderwidth=2, relief="groove")
@@ -214,7 +247,7 @@ oscar.pack()
 juan = Label(master=frame_P5, text="Juan Daniel", font="Helvetica 12")
 juan.pack()
 
-# Control del cursor
+# Control del cursor para cambio en hojas de vida
 frame_P5.bind("<Button-1>", show_leidy)
 
 # Frame anidado P6
