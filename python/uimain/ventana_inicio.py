@@ -165,25 +165,23 @@ def show_juan(e):
     frame_P5.bind("<Button-1>", show_names)
 
 # Eventos del ratón para cambiar imágenes en ventana inicio
-def change_img1(e):
-    global label_img
+'''def change_img1(e):
     label_img.pack_forget()
-    label_img = Label(master=frame_P4)
-    photo_img = PhotoImage(file='images/crm3.png')
-    photo_img = photo_img.subsample(2)
-    label_img['image'] = photo_img
-    label_img.pack()
-    label_img.bind("<Enter>", change_img2)
+    label_img2 = Label(master=frame_P4)
+    photo_img2 = PhotoImage(file='images/crm3.png')
+    photo_img2 = photo_img.subsample(2)
+    label_img2['image'] = photo_img2
+    label_img2.pack()
+    label_img2.bind("<Enter>", change_img2)
 
 def change_img2(e):
-    global label_img
-    label_img.pack_forget()
-    label_img = Label(master=frame_P4)
-    photo_img = PhotoImage(file='images/crm4.png')
-    photo_img = photo_img.subsample(2)
-    label_img['image'] = photo_img
-    label_img.pack()
-    label_img.bind("<Enter>", change_img1)
+    label_img2.pack_forget()
+    label_img3 = Label(master=frame_P4)
+    photo_img3 = PhotoImage(file='images/crm4.png')
+    photo_img3 = photo_img.subsample(2)
+    label_img3['image'] = photo_img3
+    label_img3.pack()
+    label_img3.bind("<Enter>", quit)'''
 
 
 # ------------------------------------------------
@@ -224,10 +222,10 @@ label_img['image'] = photo_img
 label_img.pack()
 
 boton_ingreso = Button(master=frame_P4, text='Ingresar al sistema', font="Helvetica 14 bold", command=inicioCrm)
-boton_ingreso.pack()
+boton_ingreso.pack(side=BOTTOM)
 
 # Control del cursor para cambio en imagenes
-label_img.bind("<Enter>", change_img1)
+#label_img.bind("<Enter>", change_img1)
 
 
 # ------- Frame principal P2 -------
