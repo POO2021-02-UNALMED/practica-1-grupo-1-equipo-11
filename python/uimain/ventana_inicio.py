@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import messagebox
 window = Tk()
 window.geometry('900x600')
 window.title('Inicio')
@@ -7,7 +7,7 @@ window.option_add('*tearOff', FALSE)  # Eliminar underline
 
 
 # -----------------------------------------------
-# ------------------- Eventos -------------------
+# ------------------- Eventos ventana inicio-------------------
 
 #Descripcion del sistema
 def info():
@@ -23,11 +23,77 @@ def inicioCrm():
     crm_ppal.geometry('900x600')
     crm_ppal.title('CRM')
     window.iconify()
+    crm_ppal.option_add('*tearOff', FALSE)  # Eliminar underline
+
+    # -----------------------------------------------------------------------------------
+    # eventos ventana ppal----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------
+
+    def act():
+        descripcion = messagebox.showinfo(title="Nuestras funcionalidades",
+                                          message="Recuerda, con nosotros puedes realizar ventas, devoluciones, ejecutar - finalizar contratos y enviar información masiva a quien pueda interesar.",
+                                          detail="¡Gracias por elegirnos como tu CRM!")
+
+    def evento():
+        window.deiconify()
+        window.destroy()
+
+    def venta():
+        pass
+
+    def dev():
+        pass
+
+    def ejec_contra():
+        pass
+
+    def fin_contra():
+        pass
+
+    def masivo():
+        pass
+
+    def inf():
+        messagebox.showinfo(title="Fundadores de Nuestro CRM",
+                            message="Leidy Daniela Alzate Florez - Estudiante de matemáticas - Juan Daniel Bula Isaza - Estudiante de estadística - Oscar Andrés Usuga Nanclares - Estudiante de ciencias de la computación",
+                            detail="Universidad Nacional De Colombia")
+
+    # -----------------------------------------------------------------------------------
+    # menu ventana ppal----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------
+
+    menubar2 = Menu(crm_ppal)
+    menu1 = Menu(menubar2)
+    menu2 = Menu(menubar2)
+    menu3 = Menu(menubar2)
+
+    menubar2.add_cascade(menu=menu1, label='Archivo', command=evento)
+    menubar2.add_cascade(menu=menu2, label='Procesos y Consultas', command=evento)
+    menubar2.add_cascade(menu=menu3, label='Ayuda', command=evento)
+
+    menu1.add_command(label="Aplicación", command=act)
+    menu1.add_command(label="Salir", command=evento)
+
+    menu2.add_command(label="Realizar una venta", command=venta)
+    menu2.add_command(label="Realizar devolución", command=dev)
+    menu2.add_command(label="Ejecutar contrato de cliente", command=ejec_contra)
+    menu2.add_command(label="Finalizar contrato de cliente", command=fin_contra)
+    menu2.add_command(label="Enviar información masiva", command=masivo)
+
+    menu3.add_command(label="Acerca de:", command=inf)
+
+    crm_ppal['menu'] = menubar2
+
+#----------------------------------------------------------------------------------------------------------
+
+
     def ventanaInicio():
         window.deiconify()
         crm_ppal.destroy()
     boton_salida = Button(crm_ppal, text = 'Volver a ventana principal', width = "50", height = "10", font="Helvetica 18 bold", command = ventanaInicio)
     boton_salida.pack()
+
+
 
 # Eventos del ratón
 def show_names(e):
