@@ -66,6 +66,7 @@ def inicioCrm():
                             message="Leidy Daniela Alzate Florez - Estudiante de matemáticas - Juan Daniel Bula Isaza - Estudiante de estadística - Oscar Andrés Usuga Nanclares - Estudiante de ciencias de la computación",
                             detail="Universidad Nacional De Colombia")
 
+    '''
     pane_crm = PanedWindow(master=crm_ppal, orient=VERTICAL)
     pane_crm.pack(fill=BOTH, expand=True)
 
@@ -77,17 +78,17 @@ def inicioCrm():
     #top = Label(pane_crm, text="top pane")
     #pane_crm.add(top)
     # Botones de zona1
-    #archivo = Button(zona1, text="Archivo", command=quit)
-    #archivo.pack()
-    #zona1.add(archivo)
+    archivo = Button(zona1, text="Archivo", command=quit)
+    archivo.pack()
+    zona1.add(archivo)
 
-    #procesos = Button(zona1, text="Procesos y Consultas", command=quit)
-    #procesos.pack()
-    #zona1.add(procesos)
+    procesos = Button(zona1, text="Procesos y Consultas", command=quit)
+    procesos.pack()
+    zona1.add(procesos)
 
-    #ayuda = Button(zona1, text="Ayuda", command=quit)
-    #ayuda.pack()
-    #zona1.add(ayuda)
+    ayuda = Button(zona1, text="Ayuda", command=quit)
+    ayuda.pack()
+    zona1.add(ayuda)
 
     # ZONA 2
     zona2 = PanedWindow(master=pane_crm, orient=VERTICAL)
@@ -99,7 +100,7 @@ def inicioCrm():
 
     descripcion_proceso = Label(zona2, text="Descripcion del detalle del proceso o la consulta")
     zona2.add(descripcion_proceso)
-
+    '''
 
 
     # --------------------------------------------------------------
@@ -172,9 +173,9 @@ def change_img1(e):
     photo_img = photo_img.subsample(2)
     label_img['image'] = photo_img
     label_img.pack()
-    #label_img.bind("<Enter>", change_img2)
+    label_img.bind("<Enter>", change_img2)
 
-'''def change_img2(e):
+def change_img2(e):
     global label_img
     label_img.pack_forget()
     label_img = Label(master=frame_P4)
@@ -183,7 +184,7 @@ def change_img1(e):
     label_img['image'] = photo_img
     label_img.pack()
     label_img.bind("<Enter>", change_img1)
-'''
+
 
 # ------------------------------------------------
 # ----------------  Barra de Menú ----------------
