@@ -17,7 +17,7 @@ def info():
                "vender productos de forma sistematizada, \n"
                "bien sea por contratos o ventas individuales.\n "
                "¡Ingresa a nuestro sistema y vive la experiencia!", font="Helvetica 10")
-    label_inf.place(x=0, y=25)
+    label_inf.place(x=50, y=50)
     frame_P3.pack(side=TOP, fill="both", expand=True, padx=5, pady=5)
 
 def evento():
