@@ -324,33 +324,33 @@ label_juan.grid(row=0, column=3)
 
 # ----------- Posicionamiento Grid de fotos2 -----------
 # Cargar fotos Leidy
-photo_leidy1 = PhotoImage(file='photos/leidy.png')
+photo_leidy1 = PhotoImage(file='photos/leidy1.png')
 photo_leidy1 = photo_leidy1.subsample(3)
-photo_leidy2 = PhotoImage(file='photos/leidy.png')
+photo_leidy2 = PhotoImage(file='photos/leidy2.png')
 photo_leidy2 = photo_leidy2.subsample(3)
-photo_leidy3 = PhotoImage(file='photos/leidy.png')
+photo_leidy3 = PhotoImage(file='photos/leidy3.png')
 photo_leidy3 = photo_leidy3.subsample(3)
-photo_leidy4 = PhotoImage(file='photos/leidy.png')
+photo_leidy4 = PhotoImage(file='photos/leidy4.png')
 photo_leidy4 = photo_leidy4.subsample(3)
 
 # Cargar fotos Oscar
-photo_oscar1 = PhotoImage(file='photos/oscar.png')
+photo_oscar1 = PhotoImage(file='photos/oscar1.png')
 photo_oscar1 = photo_oscar1.subsample(2)
-photo_oscar2 = PhotoImage(file='photos/oscar.png')
+photo_oscar2 = PhotoImage(file='photos/oscar2.png')
 photo_oscar2 = photo_oscar2.subsample(2)
-photo_oscar3 = PhotoImage(file='photos/oscar.png')
+photo_oscar3 = PhotoImage(file='photos/oscar3.png')
 photo_oscar3 = photo_oscar3.subsample(2)
-photo_oscar4 = PhotoImage(file='photos/oscar.png')
+photo_oscar4 = PhotoImage(file='photos/oscar4.png')
 photo_oscar4 = photo_oscar4.subsample(2)
 
 # Cargar fotos Juan Daniel
-photo_juan1 = PhotoImage(file='photos/juandaniel.png')
+photo_juan1 = PhotoImage(file='photos/juandaniel1.png')
 photo_juan1 = photo_juan1.subsample(4)
-photo_juan2 = PhotoImage(file='photos/juandaniel.png')
+photo_juan2 = PhotoImage(file='photos/juandaniel2.png')
 photo_juan2 = photo_juan2.subsample(4)
-photo_juan3 = PhotoImage(file='photos/juandaniel.png')
+photo_juan3 = PhotoImage(file='photos/juandaniel3.png')
 photo_juan3 = photo_juan3.subsample(4)
-photo_juan4 = PhotoImage(file='photos/juandaniel.png')
+photo_juan4 = PhotoImage(file='photos/juandaniel4.png')
 photo_juan4 = photo_juan4.subsample(4)
 
 # Fotos por persona en grid
