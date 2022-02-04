@@ -66,7 +66,7 @@ def inicioCrm():
                             message="Leidy Daniela Alzate Florez - Estudiante de matemáticas - Juan Daniel Bula Isaza - Estudiante de estadística - Oscar Andrés Usuga Nanclares - Estudiante de ciencias de la computación",
                             detail="Universidad Nacional De Colombia")
 
-    '''
+
     pane_crm = PanedWindow(master=crm_ppal, orient=VERTICAL)
     pane_crm.pack(fill=BOTH, expand=True)
 
@@ -78,17 +78,18 @@ def inicioCrm():
     #top = Label(pane_crm, text="top pane")
     #pane_crm.add(top)
     # Botones de zona1
-    archivo = Button(zona1, text="Archivo", command=quit)
-    archivo.pack()
-    zona1.add(archivo)
+    #archivo = Button(zona1, text="Archivo", command=quit)
+    #archivo.pack()
+    #zona1.add(archivo)
 
-    procesos = Button(zona1, text="Procesos y Consultas", command=quit)
-    procesos.pack()
-    zona1.add(procesos)
 
-    ayuda = Button(zona1, text="Ayuda", command=quit)
-    ayuda.pack()
-    zona1.add(ayuda)
+    #procesos = Button(zona1, text="Procesos y Consultas", command=quit)
+    #procesos.pack()
+    #zona1.add(procesos)
+
+    #ayuda = Button(zona1, text="Ayuda", command=quit)
+    #ayuda.pack()
+    #zona1.add(ayuda)
 
     # ZONA 2
     zona2 = PanedWindow(master=pane_crm, orient=VERTICAL)
@@ -100,7 +101,7 @@ def inicioCrm():
 
     descripcion_proceso = Label(zona2, text="Descripcion del detalle del proceso o la consulta")
     zona2.add(descripcion_proceso)
-    '''
+
 
 
     # --------------------------------------------------------------
