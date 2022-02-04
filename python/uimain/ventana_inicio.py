@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 window = Tk()
-window.geometry('820x400')
+window.geometry('820x440')
 window.title('Inicio')
 window.option_add('*tearOff', FALSE)  # Eliminar underline
 
@@ -135,10 +135,12 @@ def show_names(e):
     leidy.pack()
     oscar.pack()
     juan.pack()
-    #label_photo1['image'] = photo_leidy
-    #label_photo2['image'] = photo_oscar
-    #label_photo3['image'] = photo_juan
+    label_photo1['image'] = photo_leidy
+    label_photo2['image'] = photo_oscar
+    label_photo3['image'] = photo_juan
+    label_photo4['image'] = photo_blanco
     frame_P6.pack()
+
     frame_P5.bind("<Button-1>", show_leidy)
 
 def show_leidy(e):
@@ -248,7 +250,7 @@ frame_P1.pack(side='left', fill="both", expand=True, padx=5, pady=5)
 frame_P3 = Frame(master=frame_P1, width=295, borderwidth=2, relief="groove")
 label_P3 = Label(master=frame_P3, text='¡Hola! \n \n ¡Bienvenidos a nuestro CRM!', font="Helvetica 14")
 frame_P3.pack(side=TOP, fill="both", expand=True, padx=5, pady=5)
-label_P3.place(x=0, y=25)
+label_P3.place(x=65, y=45)
 
 # Frame anidado P4
 frame_P4 = Frame(master=frame_P1, borderwidth=2, relief="groove")
@@ -294,6 +296,7 @@ oscar = Label(master=frame_P5, text='Oscar Andres', font="Helvetica 12")
 oscar.pack()
 juan = Label(master=frame_P5, text="Juan Daniel", font="Helvetica 12")
 juan.pack()
+Label(master=frame_P5, text="\n", font="Helvetica 12").pack(side=BOTTOM)
 
 # Control del cursor para cambio en hojas de vida
 frame_P5.bind("<Button-1>", show_leidy)
@@ -326,39 +329,42 @@ label_juan.grid(row=0, column=3)"""
 # ----------- Posicionamiento Grid de fotos2 -----------
 # Cargar fotos Leidy
 photo_leidy = PhotoImage(file='photos/leidy.png')
-photo_leidy = photo_leidy.subsample(3)
+photo_leidy = photo_leidy.subsample(4)
 photo_leidy1 = PhotoImage(file='photos/leidy1.png')
-photo_leidy1 = photo_leidy1.subsample(4)
+photo_leidy1 = photo_leidy1.subsample(3)
 photo_leidy2 = PhotoImage(file='photos/leidy2.png')
-photo_leidy2 = photo_leidy2.subsample(4)
+photo_leidy2 = photo_leidy2.subsample(3)
 photo_leidy3 = PhotoImage(file='photos/leidy3.png')
-photo_leidy3 = photo_leidy3.subsample(4)
+photo_leidy3 = photo_leidy3.subsample(3)
 photo_leidy4 = PhotoImage(file='photos/leidy4.png')
-photo_leidy4 = photo_leidy4.subsample(4)
+photo_leidy4 = photo_leidy4.subsample(3)
 
 # Cargar fotos Oscar
 photo_oscar = PhotoImage(file='photos/oscar.png')
-photo_oscar = photo_oscar.subsample(2)
+photo_oscar = photo_oscar.subsample(4)
 photo_oscar1 = PhotoImage(file='photos/oscar1.png')
-photo_oscar1 = photo_oscar1.subsample(4)
+photo_oscar1 = photo_oscar1.subsample(3)
 photo_oscar2 = PhotoImage(file='photos/oscar2.png')
-photo_oscar2 = photo_oscar2.subsample(4)
+photo_oscar2 = photo_oscar2.subsample(3)
 photo_oscar3 = PhotoImage(file='photos/oscar3.png')
-photo_oscar3 = photo_oscar3.subsample(4)
+photo_oscar3 = photo_oscar3.subsample(3)
 photo_oscar4 = PhotoImage(file='photos/oscar4.png')
-photo_oscar4 = photo_oscar4.subsample(4)
+photo_oscar4 = photo_oscar4.subsample(3)
 
 # Cargar fotos Juan Daniel
 photo_juan = PhotoImage(file='photos/juandaniel.png')
 photo_juan = photo_juan.subsample(4)
 photo_juan1 = PhotoImage(file='photos/juandaniel1.png')
-photo_juan1 = photo_juan1.subsample(4)
+photo_juan1 = photo_juan1.subsample(3)
 photo_juan2 = PhotoImage(file='photos/juandaniel2.png')
-photo_juan2 = photo_juan2.subsample(4)
+photo_juan2 = photo_juan2.subsample(3)
 photo_juan3 = PhotoImage(file='photos/juandaniel3.png')
-photo_juan3 = photo_juan3.subsample(4)
+photo_juan3 = photo_juan3.subsample(3)
 photo_juan4 = PhotoImage(file='photos/juandaniel4.png')
-photo_juan4 = photo_juan4.subsample(4)
+photo_juan4 = photo_juan4.subsample(3)
+
+photo_blanco = PhotoImage(file='photos/blanco.png')
+photo_blanco = photo_blanco.subsample(4)
 
 # Fotos por persona en grid
 label_photo1 = Label(master=frame_P6)
@@ -374,7 +380,7 @@ label_photo3['image'] = photo_juan
 label_photo3.grid(row=1, column=0)
 
 label_photo4 = Label(master=frame_P6)
-label_photo4['image'] = photo_leidy
+label_photo4['image'] = photo_blanco
 label_photo4.grid(row=1, column=1)
 
 window.mainloop()
