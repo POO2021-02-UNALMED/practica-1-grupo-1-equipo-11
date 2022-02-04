@@ -66,7 +66,8 @@ def inicioCrm():
                             message="Leidy Daniela Alzate Florez - Estudiante de matemáticas - Juan Daniel Bula Isaza - Estudiante de estadística - Oscar Andrés Usuga Nanclares - Estudiante de ciencias de la computación",
                             detail="Universidad Nacional De Colombia")
 
-
+    # --------------------------------------------------------------
+    # ------------------- Menú ventana de usuario -------------------
     pane_crm = PanedWindow(master=crm_ppal, orient=VERTICAL)
     pane_crm.pack(fill=BOTH, expand=True)
 
@@ -74,22 +75,37 @@ def inicioCrm():
     zona1 = PanedWindow(master=pane_crm, orient=HORIZONTAL)
     zona1.pack(fill=BOTH, expand=True)
     pane_crm.add(zona1)
-    #zona1.pack(fill=BOTH, expand=1)
-    #top = Label(pane_crm, text="top pane")
-    #pane_crm.add(top)
+
     # Botones de zona1
-    #archivo = Button(zona1, text="Archivo", command=quit)
-    #archivo.pack()
-    #zona1.add(archivo)
+    archivo = Menubutton(zona1, text="Archivo", activebackground='lightblue')
+    archivo.pack(side=LEFT)
+    zona1.add(archivo)
 
+    procesos = Menubutton(zona1, text="Procesos y Consultas", activebackground='lightblue')
+    procesos.pack(side=LEFT)
+    zona1.add(procesos)
 
-    #procesos = Button(zona1, text="Procesos y Consultas", command=quit)
-    #procesos.pack()
-    #zona1.add(procesos)
+    ayuda = Menubutton(zona1, text="Ayuda", activebackground='lightblue')
+    ayuda.pack(side=LEFT)
+    zona1.add(ayuda)
 
-    #ayuda = Button(zona1, text="Ayuda", command=quit)
-    #ayuda.pack()
-    #zona1.add(ayuda)
+    # Configurando menús
+    archivo.menu = Menu(archivo, tearoff=0)
+    archivo["menu"] = archivo.menu
+    archivo.menu.add_command(label="Aplicación", command=act)
+    archivo.menu.add_command(label="Volver a ventana de inicio", command=ventanaInicio)
+
+    procesos.menu = Menu(procesos, tearoff=0)
+    procesos["menu"] = procesos.menu
+    procesos.menu.add_command(label="Realizar una venta", command=venta)
+    procesos.menu.add_command(label="Realizar devolución", command=dev)
+    procesos.menu.add_command(label="Ejecutar contrato de cliente", command=ejec_contra)
+    procesos.menu.add_command(label="Finalizar contrato de cliente", command=fin_contra)
+    procesos.menu.add_command(label="Enviar información masiva", command=masivo)
+
+    ayuda.menu = Menu(ayuda, tearoff=0)
+    ayuda["menu"] = ayuda.menu
+    ayuda.menu.add_command(label="Acerca de", command=inf)
 
     # ZONA 2
     zona2 = PanedWindow(master=pane_crm, orient=VERTICAL)
@@ -102,31 +118,6 @@ def inicioCrm():
     descripcion_proceso = Label(zona2, text="Descripcion del detalle del proceso o la consulta")
     zona2.add(descripcion_proceso)
 
-
-
-    # --------------------------------------------------------------
-    # ------------------- Menú ventana de usuario -------------------
-    menubar2 = Menu(crm_ppal)
-    menu1 = Menu(menubar2)
-    menu2 = Menu(menubar2)
-    menu3 = Menu(menubar2)
-
-    menubar2.add_cascade(menu=menu1, label='Archivo', command=evento)
-    menubar2.add_cascade(menu=menu2, label='Procesos y Consultas', command=evento)
-    menubar2.add_cascade(menu=menu3, label='Ayuda', command=evento)
-
-    menu1.add_command(label="Aplicación", command=act)
-    menu1.add_command(label="Volver a ventana de inicio", command=ventanaInicio)
-
-    menu2.add_command(label="Realizar una venta", command=venta)
-    menu2.add_command(label="Realizar devolución", command=dev)
-    menu2.add_command(label="Ejecutar contrato de cliente", command=ejec_contra)
-    menu2.add_command(label="Finalizar contrato de cliente", command=fin_contra)
-    menu2.add_command(label="Enviar información masiva", command=masivo)
-
-    menu3.add_command(label="Acerca de:", command=inf)
-
-    crm_ppal['menu'] = menubar2
 
 # Eventos del ratón para cambiar hojas de vida
 def show_names(e):
